@@ -1,0 +1,44 @@
+$diary-main-color: #3b9754;
+$diary-day-size: 1.5rem;
+
+.red {
+  border: 1px solid red;
+}
+
+nav.navbar {
+  .fa-modx {
+    color: $diary-main-color;
+    font-size: 1.6rem;
+  }
+}
+
+.overview {
+  display: flex;
+  margin-top: 1rem;
+  div {
+    height: $diary-day-size;
+    border: 1px solid #e8e8e8;
+    flex-grow: 1;
+    margin-left: -1px;
+    &.five {
+      background-color: $diary-main-color;
+    }
+    &.four {
+      background-color: lighten($diary-main-color, 10);
+    }
+    &.three {
+      background-color: lighten($diary-main-color, 20);
+    }
+    &.two {
+      background-color: lighten($diary-main-color, 30);
+    }
+    &.one {
+      background-color: lighten($diary-main-color, 40);
+    }
+    &.zero {
+      background-color: white;
+    }
+  }
+}
+
+

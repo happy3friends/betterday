@@ -13,10 +13,7 @@
 
 <hr>
 
-<!--<app-happy-card routerLink="/details"></app-happy-card>-->
-<!--<app-happy-card routerLink="/details"></app-happy-card>-->
-<!--<app-happy-card routerLink="/details"></app-happy-card>-->
-<app-happy-card routerLink="/details"
+<app-happy-card routerLink="/details/{{notes[index].getIdString()}}"
                 *ngFor="let index of lastNotesIndexes" [note]="notes[index]"></app-happy-card>
 
 <div>

@@ -57,5 +57,5 @@ export class NotesService {
     this.notes[editIndex] = editNote;
   }
 
-
+  isEditable(){}
 }

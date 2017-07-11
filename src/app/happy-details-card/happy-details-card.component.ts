@@ -10,14 +10,18 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HappyDetailsCardComponent implements OnInit {
   notes: Note[];
-  note: Note[];
+  editNote: Note;
+  editable: boolean;
+  // note: Note;
 
   constructor(private route: ActivatedRoute, private notesService: NotesService) { }
 
   ngOnInit() {
     this.notes = this.notesService.getAddedNotes();
     const id = this.route.snapshot.params['id'];
-    this.note = this.notes.findIndex(note ==> note.id )
+    const editIndex = this.notes.findIndex(note => this.getIdDate(id).getDate() === note.id.getDate() && this.getIdDate(id).getMonth() === note.id.getMonth());
+    this.editNote = this.notes[editIndex];
+    this.editable = this.notesService.isEditable(this.editNote);
   }
 
   getIdDate(dateString: string): Date {

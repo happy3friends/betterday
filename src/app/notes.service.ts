@@ -66,5 +66,8 @@ export class NotesService {
     this.notes[editIndex] = editNote;
   }
 
-  isEditable(){}
+  isEditable(note: Note) {
+    const today = new Date();
+    return today.getDate() === note.id.getDate() && today.getMonth() === note.id.getMonth();
+  }
 }

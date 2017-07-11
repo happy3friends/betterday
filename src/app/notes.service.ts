@@ -33,7 +33,7 @@ export class NotesService {
       false, true, false);
 
     this.notes[4].setNoteData(
-      'Ez egy rossz nap volt...',
+      '',
       '',
       '',
       false, false, true);

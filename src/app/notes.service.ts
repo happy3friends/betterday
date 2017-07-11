@@ -37,6 +37,7 @@ export class NotesService {
     return this.notes.slice();
   }
 
+
   editNote(editNote: Note) {
     const today = new Date();
     const editIndex = this.notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());

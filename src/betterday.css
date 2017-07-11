@@ -33,6 +33,7 @@ nav.navbar .fa-modx {
   margin-top: 2.5rem;
   margin-bottom: 1.5rem; }
   .overview .day-box {
+    cursor: pointer;
     height: 2.5rem;
     position: relative;
     border: 1px solid #e8e8e8;

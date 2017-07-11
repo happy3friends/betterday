@@ -20,22 +20,26 @@ export class NotesService {
       'Hogy felfértem a villamosra munkába menet',
       true, true, true);
 
-    this.notes[1].setNoteData(
-      'Tudtam aludni a meleg ellenére',
-      'Péntek van',
-      '',
-      false, true, true);
+    // this.notes[1].setNoteData(
+    //   'Tudtam aludni a meleg ellenére',
+    //   'Péntek van',
+    //   '',
+    //   true, false, true);
 
     this.notes[2].setNoteData(
       'A pizzafutár 20 perc alatt ideért',
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
-      true, false, true);
+      true, true, false);
 
     this.notes.reverse();
   }
 
   getNotes() {
+    return this.notes.slice();
+  }
+
+  getAddedNotes() {
     this.addedNotes = [];
 
     this.notes.forEach(note => {

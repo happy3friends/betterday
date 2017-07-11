@@ -8,13 +8,16 @@ import { NotesService } from '../notes.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  allNotes: Note[];
   notes: Note[];
+
   lastNotesIndexes = [0, 1, 2];
 
   constructor(private notesService: NotesService) { }
 
   ngOnInit() {
-    this.notes = this.notesService.getNotes();
+    this.notes = this.notesService.getAddedNotes();
+    this.allNotes = this.notesService.getNotes().reverse();
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotesService} from "../notes.service";
 import {Note} from "../note";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-happy-details-card',
@@ -8,15 +9,14 @@ import {Note} from "../note";
   styleUrls: ['./happy-details-card.component.css']
 })
 export class HappyDetailsCardComponent implements OnInit {
-  editable: boolean;
+  notes: Note[];
+  note: Note[];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private notesService: NotesService) { }
 
   ngOnInit() {
-  }
-
-  isEditable(note: Note) {
-    const today = new Date();
-    this.editable = (note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
+    this.notes = this.notesService.getAddedNotes();
+    const id = this.route.snapshot.params['id'];
+    this.note = this.notes.findIndex(note ==> note.id )
   }
 }

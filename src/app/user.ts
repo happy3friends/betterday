@@ -3,9 +3,9 @@ import { Note } from './note';
 export class User {
   e_mail: string;
   days = 21;
-  doing_exercise = false;
-  doing_meditation = false;
-  doing_kindness = false;
+  doing_exercise = true;
+  doing_meditation = true;
+  doing_kindness = true;
   notes = [];
 
   constructor (e_mail: string) {

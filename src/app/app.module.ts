@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
+import { NewHappinessComponent } from './new-happiness/new-happiness.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthService } from './auth.service';
     HappyDetailsCardComponent,
     LoginComponent,
     SettingsComponent,
-    SignupComponent
+    SignupComponent,
+    NewHappinessComponent
   ],
   imports: [
     BrowserModule,

@@ -55,10 +55,11 @@ nav.navbar {
 
 .overview {
   display: flex;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  div {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  .day-box {
     height: $diary-day-size;
+    position: relative;
     border: 1px solid #e8e8e8;
     flex-grow: 1;
     margin-left: -1px;
@@ -76,6 +77,23 @@ nav.navbar {
     }
     &.zero {
       background-color: white;
+    }
+    .date {
+      position: absolute;
+      top: -1rem;
+      left: 0;
+      font-weight: 600;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      padding-left: 0.2rem;
+      color: $diary-main-color;
+      opacity: 0;
+      transition: all ease 0.2s;
+    }
+    &:hover {
+      .date {
+        top: -2rem;
+        opacity: 1;
+      }
     }
   }
 }
@@ -226,7 +244,7 @@ nav.navbar {
 }
 
 .signup {
-  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
   background: linear-gradient(#F7F7F7,  rgba(177, 220, 217, 0.55));
   display: flex;
   flex-direction: column;

@@ -9,6 +9,7 @@ import { NotesService } from '../notes.service';
 })
 export class HomePageComponent implements OnInit {
   notes: Note[];
+  lastNotesIndexes = [0, 1, 2];
 
   constructor(private notesService: NotesService) { }
 

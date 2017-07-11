@@ -37,7 +37,7 @@ export class NotesService {
 
   getNotes() {
     this.addedNotes = [];
-    
+
     this.notes.forEach(note => {
       if (note.isAdded) {
         this.addedNotes.push(note);

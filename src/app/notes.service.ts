@@ -1,5 +1,7 @@
 import { Note } from './note';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class NotesService {
 
   private dummyNotes = [];

@@ -1,5 +1,15 @@
-$diary-main-color: #3b9754;
+$diary-main-color: #5b928e;
 $diary-day-size: 1.5rem;
+
+//$gratitude-color: #9DC2BA;
+//$exercise-color: #B6CEC0;
+//$meditation-color: #C8D4A4;
+//$kindness-color: #F6ECB7;
+
+$gratitude-color: #31869A;
+$exercise-color: #C4E0EB;
+$meditation-color: #DDBE92;
+$kindness-color: #D57101;
 
 .red {
   border: 1px solid red;
@@ -41,4 +51,31 @@ nav.navbar {
   }
 }
 
-
+.diary-post {
+  height: 10rem;
+  .gratitude, .exercise, .meditation, .kindness {
+    height: 10rem;
+    .title {
+      padding: 0.5rem 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      font-weight: 700;
+      border-bottom: rgba(255, 255, 255, 0.5) dashed 1px;
+      .fa {
+        margin-right: 1rem;
+      }
+    }
+  }
+  .gratitude {
+    background-color: $gratitude-color;
+  }
+  .exercise {
+    background-color: $exercise-color;
+  }
+  .meditation {
+    background-color: $meditation-color;
+  }
+  .kindness {
+    background-color: $kindness-color;
+  }
+}

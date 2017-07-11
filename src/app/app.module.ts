@@ -6,17 +6,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DiaryPageComponent } from './diary-page/diary-page.component';
 import { HappyCardComponent } from './happy-card/happy-card.component';
 import { HappyDetailsCardComponent } from './happy-details-card/happy-details-card.component';
-import { OverviewComponent } from './home-page/overview/overview.component';
-import { LastDaysComponent } from './home-page/last-days/last-days.component';
-import { GratitudesComponent } from './happy-details-card/gratitudes/gratitudes.component';
-import { ExerciseComponent } from './happy-details-card/exercise/exercise.component';
-import { MeditationComponent } from './happy-details-card/meditation/meditation.component';
-import { KindnessComponent } from './happy-details-card/kindness/kindness.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

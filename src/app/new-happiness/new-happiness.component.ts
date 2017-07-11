@@ -30,7 +30,6 @@ export class NewHappinessComponent implements OnInit {
       form.value.kindness !== ''
     );
     this.notesService.editNote(this.myNote);
-  // onSubmit() {
   //   this.myNote.setNoteData(
   //     form.value.gratitude1,
   //     form.value.gratitude2,
@@ -42,12 +41,21 @@ export class NewHappinessComponent implements OnInit {
   //   );
   //   this.notesService.editNote(this.myNote);
 
-    this.dataStorageService.storeNotes()
-      .subscribe(
-        (response: Response) => {
-          console.log(response);
-        }
-      );
+    // this.dataStorageService.storeNotes()
+    //   .subscribe(
+    //     (response: Response) => {
+    //       console.log(response);
+    //     }
+    //   );
 
+    this.myNote.setNoteData(
+      form.value.gratitude1,
+      form.value.gratitude2,
+      form.value.gratitude3,
+      form.value.exercise !== '',
+      form.value.meditation !== '',
+      form.value.kindness !== ''
+    );
+    this.notesService.editNote(this.myNote);
   }
 }

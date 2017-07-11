@@ -1,7 +1,7 @@
 <div class="card card-block p-0 diary-post"
      *ngIf="note.isAdded">
   <div class="row no-gutters">
-    <div class="date">{{note.id.getMonth()}}.{{note.id.getDate()}}.</div>
+    <div class="date">{{note.id.getMonth() + 1}}.{{note.id.getDate()}}.</div>
     <div class="col-xs-6 col-lg-3 gratitude">
       <div class="title"><i class="fa fa-child"></i> Hála</div>
       <div class="body">

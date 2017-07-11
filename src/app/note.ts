@@ -63,4 +63,11 @@ export class Note {
     }
     return success;
   }
+
+  getIdString() {
+    let idString = '';
+    idString = idString + ((this.id.getMonth() + 1) < 10 ? '0' + (this.id.getMonth() + 1) : this.id.getMonth() + 1);
+    idString = idString + (this.id.getDate() < 10 ? '0' + this.id.getDate() : this.id.getDate());
+    return idString;
+  }
 }

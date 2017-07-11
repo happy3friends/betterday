@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'diary', component: DiaryPageComponent },
   { path: 'new', component: NewHappinessComponent },
-  { path: 'details', component: HappyDetailsCardComponent }
+  { path: 'details/:id', component: HappyDetailsCardComponent }
 ];
 
 @NgModule({

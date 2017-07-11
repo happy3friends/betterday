@@ -9,7 +9,7 @@ export class NotesService {
   constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() + i - 3);
+      newDate.setDate(newDate.getDate() + i - 5);
       const newNote = new Note(newDate, true, true, true);
       this.notes.push(newNote);
     }
@@ -20,17 +20,23 @@ export class NotesService {
       'Hogy felfértem a villamosra munkába menet',
       true, true, true);
 
-    // this.notes[1].setNoteData(
-    //   'Tudtam aludni a meleg ellenére',
-    //   'Péntek van',
-    //   '',
-    //   true, false, true);
+    this.notes[1].setNoteData(
+      'Tudtam aludni a meleg ellenére',
+      'Péntek van',
+      '',
+      true, true, true);
 
-    this.notes[2].setNoteData(
+    this.notes[3].setNoteData(
       'A pizzafutár 20 perc alatt ideért',
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
-      true, true, false);
+      false, true, false);
+
+    this.notes[4].setNoteData(
+      'Ez egy rossz nap volt...',
+      '',
+      '',
+      false, false, true);
 
     this.notes.reverse();
   }

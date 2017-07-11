@@ -1,15 +1,17 @@
 import { Note } from './note';
 import { Injectable } from '@angular/core';
+import { current } from 'codelyzer/util/syntaxKind';
 
 @Injectable()
 export class NotesService {
 
   private notes = [];
+  private addedNotes = [];
 
   constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() + i - 3);
+      newDate.setDate(newDate.getDate() + i - 5);
       const newNote = new Note(newDate, true, true, true);
       this.notes.push(newNote);
     }
@@ -24,17 +26,37 @@ export class NotesService {
       'Tudtam aludni a meleg ellenére',
       'Péntek van',
       '',
-      false, true, true);
+      true, true, true);
 
-    this.notes[2].setNoteData(
+    this.notes[3].setNoteData(
       'A pizzafutár 20 perc alatt ideért',
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
-      true, false, true);
+      false, true, false);
+
+    this.notes[4].setNoteData(
+      'Ez egy rossz nap volt...',
+      '',
+      '',
+      false, false, true);
+
+    this.notes.reverse();
   }
 
   getNotes() {
     return this.notes.slice();
+  }
+
+  getAddedNotes() {
+    this.addedNotes = [];
+
+    this.notes.forEach(note => {
+      if (note.isAdded) {
+        this.addedNotes.push(note);
+      }
+    });
+
+    return this.addedNotes.slice();
   }
 
 
@@ -44,5 +66,5 @@ export class NotesService {
     this.notes[editIndex] = editNote;
   }
 
-
+  isEditable(){}
 }

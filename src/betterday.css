@@ -1,6 +1,29 @@
-.red {
-  border: 1px solid red; }
-
+@keyframes spinIn {
+  0% {
+    transform: rotate(100deg);
+    opacity: 0; }
+  100% {
+    transform: rotate(0);
+    opacity: 1; } }
+@keyframes fadeIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0; }
+  100% {
+    transform: translateX(0px);
+    opacity: 1; } }
+@keyframes smileIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 0.8; } }
+@keyframes floatDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
 nav.navbar .fa-modx {
   color: #5b928e;
   font-size: 1.6rem; }
@@ -14,14 +37,12 @@ nav.navbar .fa-modx {
     border: 1px solid #e8e8e8;
     flex-grow: 1;
     margin-left: -1px; }
-    .overview div.five {
-      background-color: #5b928e; }
     .overview div.four {
-      background-color: #76aaa6; }
+      background-color: #5b928e; }
     .overview div.three {
-      background-color: #96bdba; }
+      background-color: #76aaa6; }
     .overview div.two {
-      background-color: #b5d1cf; }
+      background-color: #a5c7c5; }
     .overview div.one {
       background-color: #d4e5e3; }
     .overview div.zero {
@@ -113,5 +134,56 @@ nav.navbar .fa-modx {
     left: -2.3rem; }
   .diary-post-details:hover {
     box-shadow: none; }
+
+.login-welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem; }
+  .login-welcome .fa-modx {
+    color: #5b928e;
+    font-size: 10rem;
+    animation: 1.5s ease-out spinIn; }
+  .login-welcome .welcome-text {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(28, 48, 45, 0.6);
+    text-align: center; }
+    .login-welcome .welcome-text .brand {
+      color: #5b928e;
+      font-weight: 700; }
+    .login-welcome .welcome-text .delayed {
+      opacity: 0;
+      animation: 2s ease-out smileIn;
+      animation-delay: 2s;
+      animation-fill-mode: forwards; }
+
+.signup {
+  height: calc(100vh - 56px);
+  background: linear-gradient(#F7F7F7, rgba(177, 220, 217, 0.55));
+  display: flex;
+  flex-direction: column; }
+  .signup .fa-modx {
+    color: #5b928e;
+    font-size: 10rem;
+    margin: 2rem auto;
+    display: inline-block;
+    animation: floatDown 1.5s ease-out; }
+  .signup .marketing-text {
+    margin: 0 auto 3rem auto;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(28, 48, 45, 0.6);
+    text-align: center;
+    animation: floatDown 1.5s ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 0.5s; }
+    .signup .marketing-text .brand {
+      color: #5b928e;
+      font-weight: 700;
+      margin: 0 1rem; }
 
 /*# sourceMappingURL=betterday.css.map */

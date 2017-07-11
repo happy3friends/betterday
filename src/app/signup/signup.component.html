@@ -1,15 +1,23 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onSignup(f)" #f="ngForm">
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" name="email" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="password">Jelszó</label>
-        <input type="password" class="form-control" id="password" name="password" ngModel>
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Regisztráció</button>
-    </form>
+<div class="signup">
+  <i class="fa fa-modx"></i>
+  <div class="marketing-text">21 napos pozitív naplózás <br> a <span class="brand">BetterDay</span> alkalmazással</div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-xl-4 offset-sm-2 offset-md-3 offset-xl-4">
+      <form (ngSubmit)="onSignup(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" name="email" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="password">Jelszó</label>
+          <input type="password" class="form-control" id="password" name="password" ngModel>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Regisztráció</button>
+      </form>
+    </div>
   </div>
 </div>
+
+
+

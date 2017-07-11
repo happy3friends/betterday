@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Note } from '../note';
+import { NotesService } from '../notes.service';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  allNotes: Note[];
+  notes: Note[];
 
-  constructor() { }
+  lastNotesIndexes = [0, 1, 2];
+
+  constructor(private notesService: NotesService) { }
 
   ngOnInit() {
+    this.notes = this.notesService.getAddedNotes();
+    this.allNotes = this.notesService.getNotes().reverse();
   }
 
 }

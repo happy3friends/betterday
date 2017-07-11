@@ -1,14 +1,14 @@
 <div class="card card-block p-0 diary-post"
-     *ngIf="note?.isAdded">
+     *ngIf="note.isAdded">
   <div class="row no-gutters">
-    <div class="date">{{note?.id.getMonth()}}.{{note?.id.getDate()}}.</div>
+    <div class="date">{{note.id.getMonth()}}.{{note.id.getDate()}}.</div>
     <div class="col-xs-6 col-lg-3 gratitude">
       <div class="title"><i class="fa fa-child"></i> Hála</div>
       <div class="body">
-        <div *ngIf="note?.gratitudes[0] !== ''; else failBlock">
-          <div class="text">{{note?.gratitudes[0]}}</div>
-          <div class="text">{{note?.gratitudes[1]}}</div>
-          <div class="text">{{note?.gratitudes[2]}}</div>
+        <div *ngIf="note.gratitudes[0] !== ''; else failBlock">
+          <div class="text">{{note.gratitudes[0]}}</div>
+          <div class="text">{{note.gratitudes[1]}}</div>
+          <div class="text">{{note.gratitudes[2]}}</div>
         </div>
         <ng-template #failBlock>
           <i class="fa fa-times"></i>
@@ -19,7 +19,7 @@
       <div class="title"><i class="fa fa-heartbeat"></i> Sport</div>
       <div class="body">
         <i class="fa fa-check"
-            *ngIf="note?.exercise_done; else failBlock"></i>
+            *ngIf="note.exercise_done; else failBlock"></i>
         <ng-template #failBlock>
           <i class="fa fa-times"></i>
         </ng-template>
@@ -29,7 +29,7 @@
       <div class="title"><i class="fa fa-leaf"></i> Meditálás</div>
       <div class="body">
         <i class="fa fa-check"
-           *ngIf="note?.meditation_done; else failBlock"></i>
+           *ngIf="note.meditation_done; else failBlock"></i>
         <ng-template #failBlock>
           <i class="fa fa-times"></i>
         </ng-template>
@@ -39,7 +39,7 @@
       <div class="title"><i class="fa fa-blind"></i> Kedvesség</div>
       <div class="body">
         <i class="fa fa-check"
-           *ngIf="note?.kindness_done; else failBlock"></i>
+           *ngIf="note.kindness_done; else failBlock"></i>
         <ng-template #failBlock>
           <i class="fa fa-times"></i>
         </ng-template>

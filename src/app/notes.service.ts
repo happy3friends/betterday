@@ -29,6 +29,8 @@ export class NotesService {
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
       true, false, true);
+
+    this.notes.reverse();
   }
 
   getNotes() {

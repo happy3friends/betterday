@@ -1,0 +1,29 @@
+.red {
+  border: 1px solid red; }
+
+nav.navbar .fa-modx {
+  color: #3b9754;
+  font-size: 1.6rem; }
+
+.overview {
+  display: flex;
+  margin-top: 1rem; }
+  .overview div {
+    height: 1.5rem;
+    border: 1px solid #e8e8e8;
+    flex-grow: 1;
+    margin-left: -1px; }
+    .overview div.five {
+      background-color: #3b9754; }
+    .overview div.four {
+      background-color: #4cb96a; }
+    .overview div.three {
+      background-color: #71c788; }
+    .overview div.two {
+      background-color: #95d6a7; }
+    .overview div.one {
+      background-color: #bae4c5; }
+    .overview div.zero {
+      background-color: white; }
+
+/*# sourceMappingURL=betterday.css.map */

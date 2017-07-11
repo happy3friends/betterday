@@ -1,5 +1,5 @@
 $diary-main-color: #5b928e;
-$diary-day-size: 1.5rem;
+$diary-day-size: 2.5rem;
 
 //$gratitude-color: #9DC2BA;
 //$exercise-color: #B6CEC0;
@@ -25,6 +25,7 @@ nav.navbar {
 .overview {
   display: flex;
   margin-top: 1rem;
+  margin-bottom: 3rem;
   div {
     height: $diary-day-size;
     border: 1px solid #e8e8e8;
@@ -52,7 +53,10 @@ nav.navbar {
 }
 
 .diary-post {
-  height: 10rem;
+  cursor: pointer;
+  //height: 10rem;
+  margin: 1.5rem auto;
+  border-radius: 0.5rem;
   .gratitude, .exercise, .meditation, .kindness {
     height: 10rem;
     .title {
@@ -63,6 +67,28 @@ nav.navbar {
       border-bottom: rgba(255, 255, 255, 0.5) dashed 1px;
       .fa {
         margin-right: 1rem;
+      }
+    }
+    .body {
+      display: flex;
+      flex-direction: column;
+      .text {
+        padding: 0.2rem 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: white;
+        &:first-of-type {
+          margin-top: 0.6rem;
+        }
+      }
+      .fa {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 7rem;
+        margin: auto;
+        &.fa-times {
+          color: rgba(255, 255, 255, 0.4);
+        }
       }
     }
   }

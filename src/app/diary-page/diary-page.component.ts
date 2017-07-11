@@ -13,7 +13,7 @@ export class DiaryPageComponent implements OnInit {
   constructor(private notesService: NotesService) { }
 
   ngOnInit() {
-    this.notes = this.notesService.getNotes();
+    this.notes = this.notesService.getAddedNotes();
   }
 
 }

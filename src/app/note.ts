@@ -26,14 +26,11 @@ export class Note {
   }
 
   setNoteData(grat1: string, grat2: string, grat3: string,
-              gratitudes_done: boolean, exercise_done: boolean, meditation_done: boolean, kindness_done: boolean) {
+              exercise_done: boolean, meditation_done: boolean, kindness_done: boolean) {
     this.gratitudes[0] = grat1;
     this.gratitudes[1] = grat2;
     this.gratitudes[2] = grat3;
 
-    if (gratitudes_done) {
-      this.gratitudes_done = true;
-    }
     if (exercise_done) {
       this.exercise_done = true;
     }
@@ -42,6 +39,9 @@ export class Note {
     }
     if (kindness_done) {
       this.kindness_done = true;
+    }
+    if ((grat1 && grat2 && grat3) !== '') {
+      this.gratitudes_done = true;
     }
 
     this.isAdded = true;

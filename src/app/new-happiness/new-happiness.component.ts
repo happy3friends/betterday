@@ -21,7 +21,6 @@ export class NewHappinessComponent implements OnInit {
       form.value.gratitude1,
       form.value.gratitude2,
       form.value.gratitude3,
-      (form.value.gratitude1 && form.value.gratitude2 && form.value.gratitude3) !== '',
       form.value.exercise !== '',
       form.value.meditation !== '',
       form.value.kindness !== ''

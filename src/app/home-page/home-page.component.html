@@ -1,37 +1,12 @@
 <h5 class="mt-3">Haladási napló</h5>
 <div class="overview m-3">
-  <div class="three"></div>
-  <div class="five"></div>
-  <div class="two"></div>
-  <div class="four"></div>
-  <div class="five"></div>
-  <div class="four"></div>
-  <div class="three"></div>
-  <div class="five"></div>
-  <div class="five"></div>
-  <div class="one"></div>
-  <div class="four"></div>
-  <div class="two"></div>
-  <div class="five"></div>
-  <div class="five"></div>
-  <div class="three"></div>
-  <div class="three"></div>
-  <div class="four"></div>
-  <div class="zero"></div>
-  <div class="five"></div>
-  <div class="four"></div>
-  <div class="five"></div>
-  <div class="four"></div>
-  <div class="five"></div>
-  <div class="five"></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
+  <div *ngFor="let note of allNotes"
+       [ngClass]="{
+              'two': note.getDailySuccess() === 1,
+              'three': note.getDailySuccess() === 2,
+              'four': note.getDailySuccess() === 3,
+              'five': note.getDailySuccess() === 4}"></div>
+
 </div>
 
 <hr>

@@ -40,7 +40,7 @@
 <!--<app-happy-card routerLink="/details"></app-happy-card>-->
 <!--<app-happy-card routerLink="/details"></app-happy-card>-->
 <app-happy-card routerLink="/details"
-                *ngFor="let noteElement of notes" [note]="noteElement"></app-happy-card>
+                *ngFor="let index of lastNotesIndexes" [note]="notes[index]"></app-happy-card>
 
 <div>
   <button class="btn btn-large btn-block mb-5" routerLink="/diary">Összes bejegyzés</button>

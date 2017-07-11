@@ -175,6 +175,11 @@ nav.navbar .fa-modx {
       animation-delay: 2s;
       animation-fill-mode: forwards; }
 
+.login-feedback {
+  position: absolute;
+  left: 0;
+  right: 0; }
+
 .signup {
   min-height: calc(100vh - 56px);
   background: linear-gradient(#F7F7F7, rgba(177, 220, 217, 0.55));

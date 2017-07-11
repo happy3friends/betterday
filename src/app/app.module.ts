@@ -12,6 +12,8 @@ import { GratitudesComponent } from './happy-details-card/gratitudes/gratitudes.
 import { ExerciseComponent } from './happy-details-card/exercise/exercise.component';
 import { MeditationComponent } from './happy-details-card/meditation/meditation.component';
 import { KindnessComponent } from './happy-details-card/kindness/kindness.component';
+import { LoginComponent } from './login/login.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { KindnessComponent } from './happy-details-card/kindness/kindness.compon
     GratitudesComponent,
     ExerciseComponent,
     MeditationComponent,
-    KindnessComponent
+    KindnessComponent,
+    LoginComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule

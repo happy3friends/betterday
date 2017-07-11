@@ -30,7 +30,17 @@ nav.navbar .fa-modx {
 .diary-post, .diary-post-details {
   cursor: pointer;
   margin: 1.5rem auto;
-  border-radius: 0.5rem; }
+  border-radius: 0.5rem;
+  position: relative; }
+  .diary-post .date, .diary-post-details .date {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    color: #31869A;
+    transform: rotate(-90deg);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: left 0.2s; }
   .diary-post .gratitude, .diary-post .exercise, .diary-post .meditation, .diary-post .kindness, .diary-post-details .gratitude, .diary-post-details .exercise, .diary-post-details .meditation, .diary-post-details .kindness {
     height: 10rem; }
     .diary-post .gratitude .title, .diary-post .exercise .title, .diary-post .meditation .title, .diary-post .kindness .title, .diary-post-details .gratitude .title, .diary-post-details .exercise .title, .diary-post-details .meditation .title, .diary-post-details .kindness .title {
@@ -66,34 +76,38 @@ nav.navbar .fa-modx {
     background-color: #D57101; }
   .diary-post:hover, .diary-post-details:hover {
     box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15); }
+    .diary-post:hover .date, .diary-post-details:hover .date {
+      left: -2.3rem; }
 
-.diary-post-details .gratitude {
-  height: auto;
-  padding-bottom: 2rem; }
-  .diary-post-details .gratitude textarea {
-    padding: 1rem;
-    margin: 1rem 2rem;
-    color: white;
-    background-color: #3797ad;
-    outline: hidden;
-    border: hidden;
-    overflow: auto;
-    white-space: normal;
-    border-bottom: white solid 1px; }
-    .diary-post-details .gratitude textarea:focus {
-      outline: hidden; }
-  .diary-post-details .gratitude .gratitude-text {
-    padding: 0.2rem 2rem;
-    color: white; }
-.diary-post-details .exercise, .diary-post-details .kindness, .diary-post-details .meditation {
-  height: 12rem; }
-  .diary-post-details .exercise .body, .diary-post-details .kindness .body, .diary-post-details .meditation .body {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .diary-post-details .exercise .body input, .diary-post-details .kindness .body input, .diary-post-details .meditation .body input {
-      width: 3rem;
-      height: 3rem;
-      margin-top: 2rem; }
+.diary-post-details {
+  cursor: auto; }
+  .diary-post-details .gratitude {
+    height: auto;
+    padding-bottom: 2rem; }
+    .diary-post-details .gratitude textarea {
+      padding: 1rem;
+      margin: 1rem 2rem;
+      color: white;
+      background-color: #3797ad;
+      outline: hidden;
+      border: hidden;
+      overflow: auto;
+      white-space: normal;
+      border-bottom: white solid 1px; }
+      .diary-post-details .gratitude textarea:focus {
+        outline: hidden; }
+    .diary-post-details .gratitude .gratitude-text {
+      padding: 0.2rem 2rem;
+      color: white; }
+  .diary-post-details .exercise, .diary-post-details .kindness, .diary-post-details .meditation {
+    height: 12rem; }
+    .diary-post-details .exercise .body, .diary-post-details .kindness .body, .diary-post-details .meditation .body {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .diary-post-details .exercise .body input, .diary-post-details .kindness .body input, .diary-post-details .meditation .body input {
+        width: 3rem;
+        height: 3rem;
+        margin-top: 2rem; }
 
 /*# sourceMappingURL=betterday.css.map */

@@ -27,44 +27,46 @@ nav.navbar .fa-modx {
     .overview div.zero {
       background-color: white; }
 
-.diary-post {
+.diary-post, .diary-post-details {
   cursor: pointer;
   margin: 1.5rem auto;
   border-radius: 0.5rem; }
-  .diary-post .gratitude, .diary-post .exercise, .diary-post .meditation, .diary-post .kindness {
+  .diary-post .gratitude, .diary-post .exercise, .diary-post .meditation, .diary-post .kindness, .diary-post-details .gratitude, .diary-post-details .exercise, .diary-post-details .meditation, .diary-post-details .kindness {
     height: 10rem; }
-    .diary-post .gratitude .title, .diary-post .exercise .title, .diary-post .meditation .title, .diary-post .kindness .title {
+    .diary-post .gratitude .title, .diary-post .exercise .title, .diary-post .meditation .title, .diary-post .kindness .title, .diary-post-details .gratitude .title, .diary-post-details .exercise .title, .diary-post-details .meditation .title, .diary-post-details .kindness .title {
       padding: 0.5rem 2rem;
       color: rgba(255, 255, 255, 0.8);
       text-transform: uppercase;
       font-weight: 700;
       border-bottom: rgba(255, 255, 255, 0.5) dashed 1px; }
-      .diary-post .gratitude .title .fa, .diary-post .exercise .title .fa, .diary-post .meditation .title .fa, .diary-post .kindness .title .fa {
+      .diary-post .gratitude .title .fa, .diary-post .exercise .title .fa, .diary-post .meditation .title .fa, .diary-post .kindness .title .fa, .diary-post-details .gratitude .title .fa, .diary-post-details .exercise .title .fa, .diary-post-details .meditation .title .fa, .diary-post-details .kindness .title .fa {
         margin-right: 1rem; }
-    .diary-post .gratitude .body, .diary-post .exercise .body, .diary-post .meditation .body, .diary-post .kindness .body {
+    .diary-post .gratitude .body, .diary-post .exercise .body, .diary-post .meditation .body, .diary-post .kindness .body, .diary-post-details .gratitude .body, .diary-post-details .exercise .body, .diary-post-details .meditation .body, .diary-post-details .kindness .body {
       display: flex;
       flex-direction: column; }
-      .diary-post .gratitude .body .text, .diary-post .exercise .body .text, .diary-post .meditation .body .text, .diary-post .kindness .body .text {
+      .diary-post .gratitude .body .text, .diary-post .exercise .body .text, .diary-post .meditation .body .text, .diary-post .kindness .body .text, .diary-post-details .gratitude .body .text, .diary-post-details .exercise .body .text, .diary-post-details .meditation .body .text, .diary-post-details .kindness .body .text {
         padding: 0.2rem 1rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         color: white; }
-        .diary-post .gratitude .body .text:first-of-type, .diary-post .exercise .body .text:first-of-type, .diary-post .meditation .body .text:first-of-type, .diary-post .kindness .body .text:first-of-type {
+        .diary-post .gratitude .body .text:first-of-type, .diary-post .exercise .body .text:first-of-type, .diary-post .meditation .body .text:first-of-type, .diary-post .kindness .body .text:first-of-type, .diary-post-details .gratitude .body .text:first-of-type, .diary-post-details .exercise .body .text:first-of-type, .diary-post-details .meditation .body .text:first-of-type, .diary-post-details .kindness .body .text:first-of-type {
           margin-top: 0.6rem; }
-      .diary-post .gratitude .body .fa, .diary-post .exercise .body .fa, .diary-post .meditation .body .fa, .diary-post .kindness .body .fa {
+      .diary-post .gratitude .body .fa, .diary-post .exercise .body .fa, .diary-post .meditation .body .fa, .diary-post .kindness .body .fa, .diary-post-details .gratitude .body .fa, .diary-post-details .exercise .body .fa, .diary-post-details .meditation .body .fa, .diary-post-details .kindness .body .fa {
         color: rgba(255, 255, 255, 0.9);
         font-size: 7rem;
         margin: auto; }
-        .diary-post .gratitude .body .fa.fa-times, .diary-post .exercise .body .fa.fa-times, .diary-post .meditation .body .fa.fa-times, .diary-post .kindness .body .fa.fa-times {
+        .diary-post .gratitude .body .fa.fa-times, .diary-post .exercise .body .fa.fa-times, .diary-post .meditation .body .fa.fa-times, .diary-post .kindness .body .fa.fa-times, .diary-post-details .gratitude .body .fa.fa-times, .diary-post-details .exercise .body .fa.fa-times, .diary-post-details .meditation .body .fa.fa-times, .diary-post-details .kindness .body .fa.fa-times {
           color: rgba(255, 255, 255, 0.4); }
-  .diary-post .gratitude {
+  .diary-post .gratitude, .diary-post-details .gratitude {
     background-color: #31869A; }
-  .diary-post .exercise {
+  .diary-post .exercise, .diary-post-details .exercise {
     background-color: #C4E0EB; }
-  .diary-post .meditation {
+  .diary-post .meditation, .diary-post-details .meditation {
     background-color: #DDBE92; }
-  .diary-post .kindness {
+  .diary-post .kindness, .diary-post-details .kindness {
     background-color: #D57101; }
+  .diary-post:hover, .diary-post-details:hover {
+    box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15); }
 
 /*# sourceMappingURL=betterday.css.map */

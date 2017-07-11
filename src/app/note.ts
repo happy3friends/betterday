@@ -1,10 +1,11 @@
 export class Note {
-  id: Date; // new Date(year, month, day) TODO
+  id: Date;
   gratitudes = [];
   gratitudes_done = false;
   exercise_done: boolean = null;
   meditation_done: boolean = null;
   kindness_done: boolean = null;
+  isAdded = false;
 
   constructor(id: Date, doing_exercise: boolean, doing_meditation: boolean, doing_kindness: boolean ) {
     this.id = id;
@@ -42,6 +43,8 @@ export class Note {
     if (kindness_done) {
       this.kindness_done = true;
     }
+
+    this.isAdded = true;
   }
 
   getDailySuccess(): number {

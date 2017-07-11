@@ -8,6 +8,7 @@ import { Note } from '../note';
 })
 export class HappyCardComponent implements OnInit {
   @Input() note: Note;
+  today = new Date();
 
   constructor() { }
 

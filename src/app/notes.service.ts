@@ -1,8 +1,10 @@
 import { Note } from './note';
+import { current } from 'codelyzer/util/syntaxKind';
 
 export class NotesService {
 
   private notes = [];
+  private addedNotes = [];
 
   constructor() {
     for (let i = 0; i < 21; i++) {
@@ -29,10 +31,20 @@ export class NotesService {
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
       true, false, true);
+
+    this.notes.reverse();
   }
 
   getNotes() {
-    return this.notes.slice();
+    this.addedNotes = [];
+    
+    this.notes.forEach(note => {
+      if (note.isAdded) {
+        this.addedNotes.push(note);
+      }
+    });
+
+    return this.addedNotes.slice();
   }
 
   editNote(editNote: Note) {

@@ -19,4 +19,11 @@ export class HappyDetailsCardComponent implements OnInit {
     const today = new Date();
     this.editable = (note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
   }
+
+  getIdDate(dateString: string): Date {
+    const idDate = new Date();
+    idDate.setMonth(+dateString.slice(0, 2) - 1);
+    idDate.setDate(+dateString.slice(2, 4));
+    return idDate;
+  }
 }

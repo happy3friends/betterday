@@ -6,7 +6,7 @@ import {HappyDetailsCardComponent} from "./happy-details-card/happy-details-card
 import {HomePageComponent} from "./home-page/home-page.component";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'diary', component: DiaryPageComponent },

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm} from "@angular/forms";
 import { NotesService } from '../notes.service';
 import { Note } from '../note';
 import { DataStorageService } from '../data-storage.service';

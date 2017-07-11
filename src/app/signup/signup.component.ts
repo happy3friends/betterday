@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
 
+@Injectable()
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,6 +19,9 @@ export class SignupComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signupUser(email, password);
+    firebase.database().ref('/home').push({
+      user: email
+    });
   }
 
 }

@@ -70,4 +70,6 @@ export class Note {
     idString = idString + (this.id.getDate() < 10 ? '0' + this.id.getDate() : this.id.getDate());
     return idString;
   }
+
+
 }

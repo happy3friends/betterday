@@ -1,36 +1,70 @@
 <div class="diary-post-details">
-  <div class="date">07.16.</div>
+  <div class="date">{{editNote.id.getMonth() + 1}}.{{editNote.id.getDate()}}.</div>
   <div class="gratitude">
     <div class="title"><i class="fa fa-child"></i> Hála</div>
     <div class="body">
-        <textarea rows="3">Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa ksdfas df asdf.Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa ksdfas df asdf.Lorem ipsum.
-        </textarea>
-      <div class="gratitude-text">Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa ksdfas
-        df asdf.Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa ksdfas
-        df asdf.Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa ksdfas
-        df asdf.
-      </div>
+      <div
+        class="gratitude-text"
+        *ngIf="!editable; else textarea1"
+      >{{editNote.gratitudes[0]}}</div>
+      <ng-template #textarea1>
+        <textarea rows="3">{{editNote.gratitudes[0]}}</textarea>
+      </ng-template>
+      <div
+        class="gratitude-text"
+        *ngIf="!editable; else textarea1"
+      >{{editNote.gratitudes[1]}}</div>
+      <ng-template #textarea1>
+        <textarea rows="3">{{editNote.gratitudes[1]}}</textarea>
+      </ng-template>
+      <div
+        class="gratitude-text"
+        *ngIf="!editable; else textarea1"
+      >{{editNote.gratitudes[2]}}</div>
+      <ng-template #textarea1>
+        <textarea rows="3">{{editNote.gratitudes[2]}}</textarea>
+      </ng-template>
     </div>
   </div>
   <div class="row no-gutters">
     <div class="col-md-4 exercise">
       <div class="title"><i class="fa fa-heartbeat"></i> Sport</div>
       <div class="body">
-        <i class="fa fa-check"></i>
+        <i class="fa"
+           [ngClass]="editNote.exercise_done ? 'fa-check' : 'fa-times'"
+           *ngIf="!editable; else exercise"
+        ></i>
+        <ng-template #exercise>
+          <input type="checkbox" class="custom-checkbox" [checked]="editNote.exercise_done">
+        </ng-template>
       </div>
     </div>
     <div class="col-md-4 meditation">
       <div class="title"><i class="fa fa-leaf"></i> Meditálás</div>
       <div class="body">
-        <input type="checkbox" class="custom-checkbox">
+        <i class="fa"
+           [ngClass]="editNote.meditation_done ? 'fa-check' : 'fa-times'"
+           *ngIf="!editable; else meditation"
+        ></i>
+        <ng-template #meditation>
+          <input type="checkbox" class="custom-checkbox" [checked]="editNote.meditation_done">
+        </ng-template>
       </div>
     </div>
     <div class="col-md-4 kindness">
       <div class="title"><i class="fa fa-blind"></i> Kedvesség</div>
       <div class="body">
-        <i class="fa fa-check"></i>
+        <i class="fa"
+           [ngClass]="editNote.kindness_done ? 'fa-check' : 'fa-times'"
+          *ngIf="!editable; else kindness"
+        ></i>
+        <ng-template #kindness>
+          <input type="checkbox" class="custom-checkbox" [checked]="editNote.kindness_done">
+        </ng-template>
       </div>
     </div>
   </div>
 </div>
-<div class="align-content-center"><button class="btn btn-large">Mentés</button></div>
+<div class="align-content-center">
+  <button class="btn btn-large" *ngIf="editable">Mentés</button>
+</div>

@@ -1,36 +1,42 @@
 <div class="card card-block p-0 diary-post">
   <div class="row no-gutters">
-    <div class="date">07.18.</div>
+    <div class="date">{{note?.id.getMonth()}}.{{note?.id.getDate()}}.</div>
     <div class="col-xs-6 col-lg-3 gratitude">
       <div class="title"><i class="fa fa-child"></i> Hála</div>
       <div class="body">
-        <div class="text">Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa
-          ksdfas df asdf.
-        </div>
-        <div class="text">Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa
-          ksdfas df asdf.
-        </div>
-        <div class="text">Lorem ipsum dolor sit amiet crerestendur lsdkkdmkmfgk adf adsfdfasds dasdfasdf adsfasdkfa
-          ksdfas df asdf.
-        </div>
+        <div class="text">{{note?.gratitudes[0]}}</div>
+        <div class="text">{{note?.gratitudes[1]}}</div>
+        <div class="text">{{note?.gratitudes[2]}}</div>
       </div>
     </div>
     <div class="col-xs-6 col-lg-3 exercise">
       <div class="title"><i class="fa fa-heartbeat"></i> Sport</div>
       <div class="body">
-        <i class="fa fa-check"></i>
+        <i class="fa fa-check"
+            *ngIf="note?.exercise_done; else failBlock"></i>
+        <ng-template #failBlock>
+          <i class="fa fa-times"></i>
+        </ng-template>
       </div>
     </div>
     <div class="col-xs-6 col-lg-3 meditation">
       <div class="title"><i class="fa fa-leaf"></i> Meditálás</div>
       <div class="body">
-        <i class="fa fa-times"></i>
+        <i class="fa fa-check"
+           *ngIf="note?.meditation_done; else failBlock"></i>
+        <ng-template #failBlock>
+          <i class="fa fa-times"></i>
+        </ng-template>
       </div>
     </div>
     <div class="col-xs-6 col-lg-3 kindness">
       <div class="title"><i class="fa fa-blind"></i> Kedvesség</div>
       <div class="body">
-        <i class="fa fa-check"></i>
+        <i class="fa fa-check"
+           *ngIf="note?.kindness_done; else failBlock"></i>
+        <ng-template #failBlock>
+          <i class="fa fa-times"></i>
+        </ng-template>
       </div>
     </div>
   </div>

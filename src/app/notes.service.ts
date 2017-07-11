@@ -32,7 +32,7 @@ export class NotesService {
   }
 
   getNotes() {
-    return this.dummyNotes;
+    return this.dummyNotes.slice();
   }
 
 

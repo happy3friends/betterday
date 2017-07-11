@@ -9,9 +9,7 @@
         <label for="password">Jelszó</label>
         <input type="password" class="form-control" id="password" name="password" ngModel>
       </div>
-      <button class="btn btn-primary" type="submit">Bejelentkezés</button>
-      <hr>
-      <button class="btn btn-primary" type="submit">Regisztráció</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Bejelentkezés</button>
     </form>
   </div>
 </div>

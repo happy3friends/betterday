@@ -35,6 +35,18 @@ $kindness-color: #D57101;
     opacity: 0.8;
   }
 }
+@keyframes floatDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 .red {
   border: 1px solid red;
@@ -222,3 +234,32 @@ nav.navbar {
   }
 }
 
+.signup {
+  height: calc(100vh - 56px);
+  background: linear-gradient(#F7F7F7,  rgba(177, 220, 217, 0.55));
+  display: flex;
+  flex-direction: column;
+  .fa-modx {
+    color: $diary-main-color;
+    font-size: 10rem;
+    margin: 2rem auto;
+    display: inline-block;
+    animation: floatDown 1.5s ease-out;
+  }
+  .marketing-text {
+    margin: 0 auto 3rem auto;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(28, 48, 45, 0.6);
+    text-align: center;
+    animation: floatDown 1.5s ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+    .brand {
+      color: $diary-main-color;
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+  }
+}

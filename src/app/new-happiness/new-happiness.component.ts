@@ -14,6 +14,7 @@ export class NewHappinessComponent implements OnInit {
   constructor(private notesService: NotesService) { }
 
   ngOnInit() {
+
   }
 
   onSubmit(form: NgForm) {

@@ -22,8 +22,6 @@ import { SettingsComponent } from './settings/settings.component';
     DiaryPageComponent,
     HappyCardComponent,
     HappyDetailsCardComponent,
-    OverviewComponent,
-    LastDaysComponent,
     LoginComponent,
     SettingsComponent
   ],

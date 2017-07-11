@@ -1,3 +1,22 @@
+@keyframes spinIn {
+  0% {
+    transform: rotate(100deg);
+    opacity: 0; }
+  100% {
+    transform: rotate(0);
+    opacity: 1; } }
+@keyframes fadeIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0; }
+  100% {
+    transform: translateX(0px);
+    opacity: 1; } }
+@keyframes smileIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 0.8; } }
 .red {
   border: 1px solid red; }
 
@@ -113,5 +132,30 @@ nav.navbar .fa-modx {
     left: -2.3rem; }
   .diary-post-details:hover {
     box-shadow: none; }
+
+.login-welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem; }
+  .login-welcome .fa-modx {
+    color: #5b928e;
+    font-size: 10rem;
+    animation: 1.5s ease-out spinIn; }
+  .login-welcome .welcome-text {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(28, 48, 45, 0.6);
+    text-align: center; }
+    .login-welcome .welcome-text .brand {
+      color: #5b928e;
+      font-weight: 700; }
+    .login-welcome .welcome-text .delayed {
+      opacity: 0;
+      animation: 2s ease-out smileIn;
+      animation-delay: 2s;
+      animation-fill-mode: forwards; }
 
 /*# sourceMappingURL=betterday.css.map */

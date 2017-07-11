@@ -1,6 +1,8 @@
 import { Note } from './note';
+import { Injectable } from '@angular/core';
 import { current } from 'codelyzer/util/syntaxKind';
 
+@Injectable()
 export class NotesService {
 
   private notes = [];
@@ -57,11 +59,12 @@ export class NotesService {
     return this.addedNotes.slice();
   }
 
+
   editNote(editNote: Note) {
     const today = new Date();
     const editIndex = this.notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
     this.notes[editIndex] = editNote;
   }
 
-
+  isEditable(){}
 }

@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { NewHappinessComponent } from './new-happiness/new-happiness.component';
+import { HttpModule } from '@angular/http';
+import { NotesService } from './notes.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,10 @@ import { NewHappinessComponent } from './new-happiness/new-happiness.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, NotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

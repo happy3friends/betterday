@@ -1,19 +1,40 @@
 $diary-main-color: #5b928e;
 $diary-day-size: 2.5rem;
 
-//$gratitude-color: #9DC2BA;
-//$exercise-color: #B6CEC0;
-//$meditation-color: #C8D4A4;
-//$kindness-color: #F6ECB7;
-
 $gratitude-color: #31869A;
 $exercise-color: #C4E0EB;
 $meditation-color: #DDBE92;
 $kindness-color: #D57101;
 
-//body {
-//  background-image: url("/assets/bg.jpg");
-//}
+
+@keyframes spinIn {
+  0% {
+    transform: rotate(100deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes smileIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
 
 .red {
   border: 1px solid red;
@@ -169,3 +190,35 @@ nav.navbar {
   }
 
 }
+
+.login-welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
+  .fa-modx {
+    color: $diary-main-color;
+    font-size: 10rem;
+    animation: 1.5s ease-out spinIn;
+  }
+  .welcome-text {
+    //animation: 1.5s ease-out fadeIn;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(28, 48, 45, 0.6);
+    text-align: center;
+    .brand {
+      color: $diary-main-color;
+      font-weight: 700;
+    }
+    .delayed {
+      opacity: 0;
+      animation: 2s ease-out smileIn;
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+

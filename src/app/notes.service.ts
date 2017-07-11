@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NotesService {
 
-  private notes = [];
+  private notes: Note[] = [];
   private addedNotes = [];
 
   constructor() {
@@ -66,5 +66,8 @@ export class NotesService {
     this.notes[editIndex] = editNote;
   }
 
-  isEditable(){}
+  isEditable(note: Note) {
+    const today = new Date();
+    return today.getDate() === note.id.getDate() && today.getMonth() === note.id.getMonth();
+  }
 }

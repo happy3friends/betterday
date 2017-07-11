@@ -24,9 +24,6 @@
   100% {
     opacity: 1;
     transform: translateY(0); } }
-.red {
-  border: 1px solid red; }
-
 nav.navbar .fa-modx {
   color: #5b928e;
   font-size: 1.6rem; }
@@ -40,14 +37,12 @@ nav.navbar .fa-modx {
     border: 1px solid #e8e8e8;
     flex-grow: 1;
     margin-left: -1px; }
-    .overview div.five {
-      background-color: #5b928e; }
     .overview div.four {
-      background-color: #76aaa6; }
+      background-color: #5b928e; }
     .overview div.three {
-      background-color: #96bdba; }
+      background-color: #76aaa6; }
     .overview div.two {
-      background-color: #b5d1cf; }
+      background-color: #a5c7c5; }
     .overview div.one {
       background-color: #d4e5e3; }
     .overview div.zero {

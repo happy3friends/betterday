@@ -46,12 +46,6 @@ $kindness-color: #D57101;
   }
 }
 
-
-
-.red {
-  border: 1px solid red;
-}
-
 nav.navbar {
   .fa-modx {
     color: $diary-main-color;
@@ -68,17 +62,14 @@ nav.navbar {
     border: 1px solid #e8e8e8;
     flex-grow: 1;
     margin-left: -1px;
-    &.five {
+    &.four {
       background-color: $diary-main-color;
     }
-    &.four {
+    &.three {
       background-color: lighten($diary-main-color, 10);
     }
-    &.three {
-      background-color: lighten($diary-main-color, 20);
-    }
     &.two {
-      background-color: lighten($diary-main-color, 30);
+      background-color: lighten($diary-main-color, 25);
     }
     &.one {
       background-color: lighten($diary-main-color, 40);

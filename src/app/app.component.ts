@@ -25,4 +25,6 @@ export class AppComponent implements OnInit {
       storageBucket: 'betterday-94a8e.appspot.com'
     });
   }
+
+
 }

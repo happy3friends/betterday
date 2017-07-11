@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NotesService {
 
-  private notes = [];
+  private notes: Note[] = [];
   private addedNotes = [];
 
   constructor() {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from '../notes.service';
+import { Note } from '../note';
 
 @Component({
   selector: 'app-diary-page',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diary-page.component.css']
 })
 export class DiaryPageComponent implements OnInit {
+  notes: Note[];
 
-  constructor() { }
+  constructor(private notesService: NotesService) { }
 
   ngOnInit() {
+    this.notes = this.notesService.getNotes();
   }
 
 }

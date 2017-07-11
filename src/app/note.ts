@@ -24,13 +24,14 @@ export class Note {
     }
   }
 
-  setNoteData(grat1: string, grat2: string, grat3: string, exercise_done: boolean, meditation_done: boolean, kindness_done: boolean) {
+  setNoteData(grat1: string, grat2: string, grat3: string,
+              gratitudes_done: boolean, exercise_done: boolean, meditation_done: boolean, kindness_done: boolean) {
     this.gratitudes[0] = grat1;
     this.gratitudes[1] = grat2;
     this.gratitudes[2] = grat3;
 
-    if (grat3 !== '') {
-      this.exercise_done = true;
+    if (gratitudes_done) {
+      this.gratitudes_done = true;
     }
     if (exercise_done) {
       this.exercise_done = true;

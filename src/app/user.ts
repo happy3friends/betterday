@@ -32,10 +32,4 @@ export class User {
   //     this.notes.push(newNote);
   //   }
   // }
-
-  editNote(editNote: Note) {
-    const today = new Date();
-    const editIndex = this.notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
-    this.notes[editIndex] = editNote;
-  }
 }

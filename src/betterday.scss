@@ -161,6 +161,11 @@ nav.navbar {
       }
     }
   }
-
+  .date {
+    left: -2.3rem;
+  }
+  &:hover {
+    box-shadow: none;
+  }
 
 }

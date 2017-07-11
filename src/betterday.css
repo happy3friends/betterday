@@ -109,5 +109,9 @@ nav.navbar .fa-modx {
         width: 3rem;
         height: 3rem;
         margin-top: 2rem; }
+  .diary-post-details .date {
+    left: -2.3rem; }
+  .diary-post-details:hover {
+    box-shadow: none; }
 
 /*# sourceMappingURL=betterday.css.map */

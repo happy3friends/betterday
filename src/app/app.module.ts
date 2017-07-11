@@ -14,6 +14,9 @@ import { MeditationComponent } from './happy-details-card/meditation/meditation.
 import { KindnessComponent } from './happy-details-card/kindness/kindness.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,17 +25,14 @@ import { SettingsComponent } from './settings/settings.component';
     DiaryPageComponent,
     HappyCardComponent,
     HappyDetailsCardComponent,
-    OverviewComponent,
-    LastDaysComponent,
-    GratitudesComponent,
-    ExerciseComponent,
-    MeditationComponent,
-    KindnessComponent,
     LoginComponent,
-    SettingsComponent
+    SettingsComponent,
+    SignupComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

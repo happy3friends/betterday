@@ -2,10 +2,12 @@
 <div class="overview m-3">
   <div *ngFor="let note of allNotes"
        [ngClass]="{
-              'two': note.getDailySuccess() === 1,
-              'three': note.getDailySuccess() === 2,
-              'four': note.getDailySuccess() === 3,
-              'five': note.getDailySuccess() === 4}"></div>
+              'zero': note.getDailySuccess() === 0,
+              'one': note.getDailySuccess() === 1,
+              'two': note.getDailySuccess() === 2,
+              'three': note.getDailySuccess() === 3,
+              'four': note.getDailySuccess() === 4
+  }"></div>
 
 </div>
 

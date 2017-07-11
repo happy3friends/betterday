@@ -24,10 +24,6 @@ import { SettingsComponent } from './settings/settings.component';
     HappyDetailsCardComponent,
     OverviewComponent,
     LastDaysComponent,
-    GratitudesComponent,
-    ExerciseComponent,
-    MeditationComponent,
-    KindnessComponent,
     LoginComponent,
     SettingsComponent
   ],

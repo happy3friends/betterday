@@ -61,6 +61,17 @@ nav.navbar {
   //height: 10rem;
   margin: 1.5rem auto;
   border-radius: 0.5rem;
+  position: relative;
+  .date {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    color: $gratitude-color;
+    transform: rotate(-90deg);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: left 0.2s;
+  }
   .gratitude, .exercise, .meditation, .kindness {
     height: 10rem;
     .title {
@@ -107,10 +118,14 @@ nav.navbar {
   }
   &:hover {
     box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15);
+    .date {
+      left: -2.3rem;
+    }
   }
 }
 
 .diary-post-details {
+  cursor: auto;
   .gratitude {
     height: auto;
     padding-bottom: 2rem;
@@ -146,6 +161,11 @@ nav.navbar {
       }
     }
   }
-
+  .date {
+    left: -2.3rem;
+  }
+  &:hover {
+    box-shadow: none;
+  }
 
 }

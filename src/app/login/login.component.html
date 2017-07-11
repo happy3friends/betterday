@@ -1,6 +1,6 @@
 <div class="row">
-  <div *ngIf="authService.isAuthenticated()" class="login-feedback alert alert-success">Sikeres bejelentkezés</div>
-  <div *ngIf="!authService.isAuthenticated()" class="login-feedback alert alert-danger">Sikertelen bejelentkezés</div>
+  <div *ngIf="getAuthService().isAuthenticated()" class="feedback-message alert alert-success">Sikeres bejelentkezés</div>
+  <div *ngIf="!getAuthService().isAuthenticated()" class="feedback-message alert alert-danger">Sikertelen bejelentkezés</div>
 </div>
 
 <div class="login-welcome">
@@ -8,7 +8,7 @@
   <div class="welcome-text">Üdvözlünk a <span class="brand">BetterDay</span> oldalán<span class="delayed">,<br> <em>jó újra látni!</em></span></div>
 </div>
 
-<div class="row login-feedback">
+<div class="row feedback-message">
   <div class="col-xl-4">
 
   </div>

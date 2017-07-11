@@ -24,4 +24,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  getAuthService(): AuthService {
+    return this.authService;
+  }
+
 }

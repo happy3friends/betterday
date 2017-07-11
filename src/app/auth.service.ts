@@ -2,15 +2,21 @@ import * as firebase from 'firebase';
 
 export class AuthService {
   token: string;
+  errorMessage = '';
 
   signupUser(email: string, password: string) {
+    this.errorMessage = '';
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .catch(
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.errorMessage = error.message;
+        }
       )
   }
 
   loginUser(email: string, password: string) {
+    this.errorMessage = '';
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         (response) => {
@@ -21,7 +27,10 @@ export class AuthService {
         }
       )
       .catch(
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.errorMessage = error.message;
+        }
       );
   }
 

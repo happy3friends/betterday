@@ -25,12 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
     DiaryPageComponent,
     HappyCardComponent,
     HappyDetailsCardComponent,
-    OverviewComponent,
-    LastDaysComponent,
-    GratitudesComponent,
-    ExerciseComponent,
-    MeditationComponent,
-    KindnessComponent,
     LoginComponent,
     SettingsComponent,
     SignupComponent

@@ -52,7 +52,6 @@ export class NotesService {
     this.getNotes().forEach(note => {
       myNotes.push(JSON.stringify(note))
     });
-    console.log(myNotes);
     return myNotes;
     // console.log(testDate);
     // const myDate = new Date(testDate);
@@ -60,7 +59,6 @@ export class NotesService {
   }
 
   setNotes(notes: string[]) {
-    console.log('aa');
     notes.forEach(note => {
       console.log('id: ' + JSON.parse(note).id);
     });

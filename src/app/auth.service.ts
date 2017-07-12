@@ -23,7 +23,6 @@ export class AuthService {
 
     firebase.auth().onAuthStateChanged(
       (user) => {
-        console.log(user);
         if (user != null) {
           this.isLoggedIn.next(true);
         } else {
@@ -71,10 +70,9 @@ export class AuthService {
             .then(
               (token: string) => this.token = token
             );
-          console.log(firebase.auth().currentUser.email);
           firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
-           const a = (snapshot.val().notes).toString();
-            JSON.parse(a);
+           // const a = (snapshot.val().notes).toString();
+           //  JSON.parse(a);
           });
         }
       )
@@ -87,7 +85,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log(this.notesService.getNotesJSON());
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
        'email': firebase.auth().currentUser.email,
       'notes': this.notesService.getNotesJSON()

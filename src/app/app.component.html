@@ -14,12 +14,17 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="diary">Naplóm</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="new"><i class="fa fa-plus mr-1"></i>Új bejegyzés</a>
           </li>
       </ul>
       <ng-template #emptymenu>
-        <ul class="navbar-nav mr-auto"><li class="nav-item"><a class="nav-link"> </a></li></ul>
+        <ul class="navbar-nav mr-auto"><li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about">Rólunk</a>
+          </li>
+        </ul>
       </ng-template>
 
       <ul class="navbar-nav" *ngIf="!authService.isAuthenticated()">

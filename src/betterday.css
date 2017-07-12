@@ -239,14 +239,12 @@ nav.navbar .fa-modx {
   color: white;
   padding: 3rem 1rem 3rem 15%;
   font-size: 3rem;
-  font-weight: 200;
-  animation: floatDown 1.5s ease-out; }
+  font-weight: 200; }
   .about .section1 span {
     font-weight: 700;
     font-size: 4rem;
-    margin-left: 10%; }
-.about iframe {
-  animation: floatDown 1.5s ease-out; }
+    margin-left: 10%;
+    animation: floatDown 1.5s ease-out; }
 .about .section2 {
   background: linear-gradient(#5b928e, #47736f);
   padding: 3rem;

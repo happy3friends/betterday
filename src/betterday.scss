@@ -325,15 +325,13 @@ nav.navbar {
     padding: 3rem 1rem 3rem 15%;
     font-size: 3rem;
     font-weight: 200;
-    animation: floatDown 1.5s ease-out;
     span {
       font-weight: 700;
       font-size: 4rem;
       margin-left: 10%;
+      animation: floatDown 1.5s ease-out;
+
     }
-  }
-  iframe {
-    animation: floatDown 1.5s ease-out;
   }
   .section2 {
     background: linear-gradient($diary-main-color,  darken($diary-main-color, 10));

@@ -12,13 +12,14 @@ import {AboutComponent} from "./about/about.component";
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/about', pathMatch: 'full' },
-  { path: '**', redirectTo: '/about', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'diary', component: DiaryPageComponent, canActivate: [AuthGuard] },
   { path: 'new', component: NewHappinessComponent, canActivate: [AuthGuard] },
-  { path: 'details/:id', component: HappyDetailsCardComponent, canActivate: [AuthGuard] }
+  { path: 'details/:id', component: HappyDetailsCardComponent, canActivate: [AuthGuard] },
+  // { path: '**', redirectTo: '/about'}
+
 ];
 
 @NgModule({

@@ -44,6 +44,24 @@ $kindness-color: #D57101;
     transform: translateY(0);
   }
 }
+@keyframes alertDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
 
 nav.navbar {
   .fa-modx {
@@ -253,6 +271,8 @@ nav.navbar {
   position: absolute;
   left: 0;
   right: 0;
+  opacity: 0;
+  animation: 5s alertDown;
 }
 
 .signup {

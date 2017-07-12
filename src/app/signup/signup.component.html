@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="regButtonClicked">
   <div *ngIf="getAuthService().errorMessage === ''" class="feedback-message alert alert-success" role="alert">Sikeres regisztráció</div>
   <div *ngIf="getAuthService().errorMessage !== ''" class="feedback-message alert alert-danger" role="alert">{{ getAuthService().errorMessage }}</div>
 </div>

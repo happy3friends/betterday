@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="loginButtonClicked">
   <div *ngIf="getAuthService().isAuthenticated()" class="feedback-message alert alert-success">Sikeres bejelentkezés</div>
   <div *ngIf="!getAuthService().isAuthenticated()" class="feedback-message alert alert-danger">Sikertelen bejelentkezés</div>
 </div>

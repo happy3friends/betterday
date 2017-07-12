@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginButtonClicked = false;
 
   constructor(private authService: AuthService) { }
 
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.loginUser(email, password);
+    this.loginButtonClicked = true;
   }
 
   getAuthService(): AuthService {

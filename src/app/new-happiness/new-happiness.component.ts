@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {NgForm} from '@angular/forms';
 import { NotesService } from '../notes.service';
 import { Note } from '../note';
 import { DataStorageService } from '../data-storage.service';
@@ -21,21 +21,15 @@ export class NewHappinessComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // this.myNote.setNoteData(
-    //   form.value.gratitude1,
-    //   form.value.gratitude2,
-    //   form.value.gratitude3,
-    //   form.value.exercise !== '',
-    //   form.value.meditation !== '',
-    //   form.value.kindness !== ''
-    // );
-    // this.notesService.editNote(this.myNote);
+    this.myNote.setNoteData(
+      form.value.gratitude1,
+      form.value.gratitude2,
+      form.value.gratitude3,
+      form.value.exercise !== '',
+      form.value.meditation !== '',
+      form.value.kindness !== ''
+    );
+    this.notesService.editNote(this.myNote);
 
-    this.dataStorageService.storeNotes()
-      .subscribe(
-        (response: Response) => {
-          console.log(response);
-        }
-      );
   }
 }

@@ -30,6 +30,6 @@ export class NewHappinessComponent implements OnInit {
       form.value.kindness !== ''
     );
     this.notesService.editNote(this.myNote);
-
   }
+
 }

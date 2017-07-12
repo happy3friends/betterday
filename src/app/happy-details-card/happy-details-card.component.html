@@ -1,3 +1,4 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
 <div class="diary-post-details">
   <div class="date">{{editNote.id.getMonth() + 1}}.{{editNote.id.getDate()}}.</div>
   <div class="gratitude">
@@ -8,21 +9,33 @@
         *ngIf="!editable; else textarea1"
       >{{editNote.gratitudes[0]}}</div>
       <ng-template #textarea1>
-        <textarea rows="3">{{editNote.gratitudes[0]}}</textarea>
+        <textarea
+          rows="3"
+          ngModel
+          name="gratitude1"
+        > {{ editNote.gratitudes[0] }} </textarea>
       </ng-template>
       <div
         class="gratitude-text"
         *ngIf="!editable; else textarea1"
       >{{editNote.gratitudes[1]}}</div>
       <ng-template #textarea1>
-        <textarea rows="3">{{editNote.gratitudes[1]}}</textarea>
+        <textarea
+          rows="3"
+          ngModel
+          name="gratitude2"
+        >{{editNote.gratitudes[1]}}</textarea>
       </ng-template>
       <div
         class="gratitude-text"
         *ngIf="!editable; else textarea1"
       >{{editNote.gratitudes[2]}}</div>
       <ng-template #textarea1>
-        <textarea rows="3">{{editNote.gratitudes[2]}}</textarea>
+        <textarea
+          rows="3"
+          ngModel
+          name="gratitude3"
+        >{{editNote.gratitudes[2]}}</textarea>
       </ng-template>
     </div>
   </div>
@@ -35,7 +48,13 @@
            *ngIf="!editable; else exercise"
         ></i>
         <ng-template #exercise>
-          <input type="checkbox" class="custom-checkbox" [checked]="editNote.exercise_done">
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            [checked]="editNote.exercise_done"
+            ngModel
+            name="exercise"
+          >
         </ng-template>
       </div>
     </div>
@@ -47,7 +66,13 @@
            *ngIf="!editable; else meditation"
         ></i>
         <ng-template #meditation>
-          <input type="checkbox" class="custom-checkbox" [checked]="editNote.meditation_done">
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            [checked]="editNote.meditation_done"
+            ngModel
+            name="meditation"
+          >
         </ng-template>
       </div>
     </div>
@@ -59,12 +84,19 @@
           *ngIf="!editable; else kindness"
         ></i>
         <ng-template #kindness>
-          <input type="checkbox" class="custom-checkbox" [checked]="editNote.kindness_done">
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            [checked]="editNote.kindness_done"
+            ngModel
+            name="kindness"
+          >
         </ng-template>
       </div>
     </div>
   </div>
 </div>
 <div class="align-content-center">
-  <button class="btn btn-large" *ngIf="editable">Mentés</button>
+  <button class="btn btn-large" *ngIf="editable" type="submit">Mentés</button>
 </div>
+</form>

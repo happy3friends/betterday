@@ -21,15 +21,14 @@ export class LoginComponent implements OnInit {
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.loginUser(email, password);
-    this.loginButtonClicked = true;
-
-    setTimeout(() => {
+    this.authService.loginUser(email, password).then(() => {
       if (this.authService.errorMessage !== '') {
         const message = this.authService.errorMessage;
         const success = false;
         this.alertService.setAlert(message, success);
       }
-    }, 500);
+    });
+    this.loginButtonClicked = true;
+
   }
 }

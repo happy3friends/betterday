@@ -19,27 +19,26 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignup(form: NgForm) {
+  onSingup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signupUser(email, password);
+    this.authService.signupUser(email, password).then(
+      () => {
+        let message;
+        let success;
+        if (this.authService.errorMessage === '') {
+          message = 'Sikeres regisztráció, most már bejelentkezhet.';
+          success = true;
+        } else {
+          message = this.authService.errorMessage;
+          success = false;
+        }
+        this.alertService.setAlert(message, success);
+      }
+    );
     firebase.database().ref('users/').push({
       email,
       'notes': this.notesService.getNotes()
     });
-
-    setTimeout(() => {
-      let message;
-      let success;
-      if (this.authService.errorMessage === '') {
-        message = 'Sikeres regisztráció, most már bejelentkezhet.';
-        success = true;
-      } else {
-        message = this.authService.errorMessage;
-        success = false;
-      }
-      this.alertService.setAlert(message, success);
-    }, 500);
-
   }
 }

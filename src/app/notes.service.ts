@@ -47,6 +47,10 @@ export class NotesService {
     return this.notes.slice();
   }
 
+  setNotes(notes: Note[]) {
+    this.notes = notes;
+  }
+
   getAddedNotes() {
     this.addedNotes = [];
 

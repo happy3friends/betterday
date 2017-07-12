@@ -44,8 +44,6 @@ export class AuthService {
       );
     });
   }
-  constructor(private router: Router, private notesService: NotesService) {
-  }
 
   signupUser(email: string, password: string) {
     this.errorMessage = '';

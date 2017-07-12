@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../note';
 import { NotesService } from '../notes.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
@@ -13,11 +14,14 @@ export class HomePageComponent implements OnInit {
 
   lastNotesIndexes = [0, 1, 2];
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService, private router: Router) { }
 
   ngOnInit() {
     this.notes = this.notesService.getAddedNotes();
     this.allNotes = this.notesService.getNotes().reverse();
   }
 
+  onLoadEdit() {
+    this.router.navigate('');
+  }
 }

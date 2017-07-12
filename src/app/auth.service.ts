@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { NotesService } from './notes.service';
+import { Note } from './note';
 
 @Injectable()
 export class AuthService {
@@ -43,8 +44,6 @@ export class AuthService {
         }
       );
     });
-  }
-  constructor(private router: Router, private notesService: NotesService) {
   }
 
   signupUser(email: string, password: string) {

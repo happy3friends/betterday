@@ -21,9 +21,6 @@ export class AppComponent implements OnInit {
               private alertService: AlertService) { }
 
   ngOnInit() {
-
-
-
   }
 
   onLogout() {

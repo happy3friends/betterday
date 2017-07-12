@@ -11,7 +11,7 @@ export class NotesService {
   constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() + i);
+      newDate.setDate(newDate.getDate() + i - 5);
       const newNote = new Note(newDate, true, true, true);
       this.notes.push(newNote);
     }
@@ -39,7 +39,7 @@ export class NotesService {
       '',
       '',
       false, false, true);
-    
+
     this.notes.reverse();
   }
 

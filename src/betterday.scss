@@ -6,7 +6,6 @@ $exercise-color: #C4E0EB;
 $meditation-color: #DDBE92;
 $kindness-color: #D57101;
 
-
 @keyframes spinIn {
   0% {
     transform: rotate(100deg);
@@ -97,6 +96,12 @@ nav.navbar {
       }
     }
   }
+}
+
+.all-notes-button{
+  cursor: pointer;
+  background-color: darken($gratitude-color, 5);
+  color: rgba(255, 255, 255, 0.8);;
 }
 
 .diary-post, .diary-post-details {

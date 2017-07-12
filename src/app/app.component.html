@@ -43,6 +43,7 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="row" *ngIf="getAlertService().showAlert">
-  <div class="feedback-message alert" ngClass="{{ getAlertService().alertSuccess }}" role="alert">{{ getAlertService().alertMessage }}</div>
-</div>
+ <div class="feedback-message alert row" ngClass="{{ getAlertService().alertSuccess }}"
+       *ngIf="getAlertService().showAlert"
+       role="alert">{{ getAlertService().alertMessage }}</div>
+

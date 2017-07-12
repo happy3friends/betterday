@@ -16,6 +16,7 @@ import { NewHappinessComponent } from './new-happiness/new-happiness.component';
 import { HttpModule } from '@angular/http';
 import { NotesService } from './notes.service';
 import { AuthGuard } from './auth-guard.service';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthGuard } from './auth-guard.service';
     LoginComponent,
     SettingsComponent,
     SignupComponent,
-    NewHappinessComponent
+    NewHappinessComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

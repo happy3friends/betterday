@@ -35,4 +35,5 @@ export class NewHappinessComponent implements OnInit {
 
     this.router.navigate(['/']);
   }
+
 }

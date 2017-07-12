@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { NotesService } from './notes.service';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +12,7 @@ export class AuthService {
   errorMessage = '';
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private notesService: NotesService) {
     firebase.initializeApp({
       apiKey: 'AIzaSyD633YnU0DJ4DA-V-IcbxCaLL2GAXXMjZY',
       authDomain: 'betterday-94a8e.firebaseapp.com',
@@ -43,10 +44,12 @@ export class AuthService {
       );
     });
   }
+  constructor(private router: Router, private notesService: NotesService) {
+  }
 
   signupUser(email: string, password: string) {
     this.errorMessage = '';
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
         (response) => {
           this.router.navigate(['/login']);
@@ -62,14 +65,19 @@ export class AuthService {
 
   loginUser(email: string, password: string) {
     this.errorMessage = '';
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    return firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         (response) => {
           this.router.navigate(['/']);
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token
-            )
+            );
+          console.log(firebase.auth().currentUser.email);
+          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
+           const a = (snapshot.val().notes).toString();
+            JSON.parse(a);
+          });
         }
       )
       .catch(
@@ -81,6 +89,12 @@ export class AuthService {
   }
 
   logout() {
+    console.log(this.notesService.getNotesJSON());
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+       'email': firebase.auth().currentUser.email,
+      'notes': this.notesService.getNotesJSON()
+    });
+
     firebase.auth().signOut()
       .then(
         (response) => {
@@ -88,6 +102,10 @@ export class AuthService {
         }
       );
     this.token = null;
+  }
+
+  getUserId() {
+    return firebase.auth().currentUser.uid;
   }
 
   getToken() {

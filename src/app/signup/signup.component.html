@@ -1,8 +1,3 @@
-<div class="row" *ngIf="regButtonClicked">
-  <div *ngIf="getAuthService().errorMessage === ''" class="feedback-message alert alert-success" role="alert">Sikeres regisztráció</div>
-  <div *ngIf="getAuthService().errorMessage !== ''" class="feedback-message alert alert-danger" role="alert">{{ getAuthService().errorMessage }}</div>
-</div>
-
 <div class="signup">
   <i class="fa fa-modx"></i>
   <div class="marketing-text">21 napos pozitív naplózás <br> a <span class="brand">BetterDay</span> alkalmazással</div>

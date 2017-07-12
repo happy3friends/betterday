@@ -14,6 +14,9 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit {
   title = 'Better Day app';
   notes: Note[];
+  showAlert = false;
+  alertMessage = '';
+  alertSuccess: boolean;
 
   constructor(private notesService: NotesService,
               private authService: AuthService) { }
@@ -30,6 +33,16 @@ export class AppComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  getAuthService(): AuthService {
+    return this.authService
+  }
+
+  setAlert(message: string, succes: boolean) {
+    this.alertMessage = message;
+    this.alertSuccess = succes;
+    this.showAlert = true;
   }
 
 }

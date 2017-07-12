@@ -2,14 +2,14 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { NotesService } from './notes.service';
-import { Note } from './note';
 
 @Injectable()
 export class AuthService {
   token: string;
   errorMessage = '';
 
-  constructor(private router: Router, private notesService: NotesService) {}
+  constructor(private router: Router, private notesService: NotesService) {
+  }
 
   signupUser(email: string, password: string) {
     this.errorMessage = '';
@@ -37,14 +37,10 @@ export class AuthService {
             .then(
               (token: string) => this.token = token
             );
-          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
-            console.log(firebase.auth().currentUser.uid);
-
-            console.log(snapshot.val()[1]);
-            let n: Note[];
-            n = snapshot.val().notes;
-            console.log(n[0]);
-            this.notesService.setNotes(n);
+          console.log(firebase.auth().currentUser.email);
+          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
+           const a = (snapshot.val().notes).toString();
+            JSON.parse(a);
           });
         }
       )
@@ -57,8 +53,11 @@ export class AuthService {
   }
 
   logout() {
+    console.log(this.notesService.getNotesJSON());
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-      'notes': this.notesService.getNotes()});
+       'email': firebase.auth().currentUser.email,
+      'notes': this.notesService.getNotesJSON()
+    });
 
     firebase.auth().signOut()
       .then(
@@ -67,6 +66,10 @@ export class AuthService {
         }
       );
     this.token = null;
+  }
+
+  getUserId() {
+    return firebase.auth().currentUser.uid;
   }
 
   getToken() {

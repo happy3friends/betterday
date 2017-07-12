@@ -19,11 +19,15 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSingup(form: NgForm) {
+  onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signupUser(email, password).then(
       () => {
+        firebase.database().ref('users/' + this.authService.getUserId()).set({
+          email,
+          'notes': this.notesService.getNotesJSON()
+        });
         let message;
         let success;
         if (this.authService.errorMessage === '') {
@@ -36,9 +40,6 @@ export class SignupComponent implements OnInit {
         this.alertService.setAlert(message, success);
       }
     );
-    firebase.database().ref('users/').push({
-      email,
-      'notes': this.notesService.getNotes()
-    });
+
   }
 }

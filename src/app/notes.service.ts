@@ -11,7 +11,7 @@ export class NotesService {
   constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() + i - 5);
+      newDate.setDate(newDate.getDate() + i);
       const newNote = new Note(newDate, true, true, true);
       this.notes.push(newNote);
     }
@@ -39,7 +39,7 @@ export class NotesService {
       '',
       '',
       false, false, true);
-
+    
     this.notes.reverse();
   }
 
@@ -47,8 +47,23 @@ export class NotesService {
     return this.notes.slice();
   }
 
-  setNotes(notes: Note[]) {
-    this.notes = notes;
+  getNotesJSON() {
+    const myNotes = [];
+    this.getNotes().forEach(note => {
+      myNotes.push(JSON.stringify(note))
+    });
+    console.log(myNotes);
+    return myNotes;
+    // console.log(testDate);
+    // const myDate = new Date(testDate);
+    // console.log(myDate);
+  }
+
+  setNotes(notes: string[]) {
+    console.log('aa');
+    notes.forEach(note => {
+      console.log('id: ' + JSON.parse(note).id);
+    });
   }
 
   getAddedNotes() {

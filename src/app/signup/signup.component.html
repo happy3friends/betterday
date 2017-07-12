@@ -1,6 +1,6 @@
 <div class="row">
-  <div *ngIf="getAuthService().errorMessage === ''" class="feedback-message alert alert-success">Sikeres regisztráció</div>
-  <div *ngIf="getAuthService().errorMessage !== ''" class="feedback-message alert alert-danger">{{ getAuthService().errorMessage }}</div>
+  <div *ngIf="getAuthService().errorMessage === ''" class="feedback-message alert alert-success" role="alert">Sikeres regisztráció</div>
+  <div *ngIf="getAuthService().errorMessage !== ''" class="feedback-message alert alert-danger" role="alert">{{ getAuthService().errorMessage }}</div>
 </div>
 
 <div class="signup">

@@ -1,6 +1,7 @@
-import { Component, Injectable, OnInit, Output } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
+import { NotesService } from '../notes.service';
 import { AlertService } from '../alert.service';
 
 @Injectable()
@@ -12,7 +13,8 @@ import { AlertService } from '../alert.service';
 export class SignupComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private alertService: AlertService) { }
+              private alertService: AlertService,
+              private notesService: NotesService) { }
 
   ngOnInit() {
   }
@@ -22,7 +24,8 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password);
     firebase.database().ref('users/').push({
-      email
+      email,
+      'notes': this.notesService.getNotes()
     });
 
     setTimeout(() => {

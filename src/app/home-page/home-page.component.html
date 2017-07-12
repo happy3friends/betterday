@@ -1,7 +1,7 @@
 <h5 class="mt-3">Haladási napló</h5>
 <div class="overview">
   <div class="day-box"
-       routerLink="note.isAdded ? '/details/{{note.getIdString()}}' : ''"
+       (click)="onLoadEdit(note)"
        *ngFor="let note of allNotes"
        [ngClass]="{
           'zero': note.getDailySuccess() === 0,

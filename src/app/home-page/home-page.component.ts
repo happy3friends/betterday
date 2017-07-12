@@ -21,7 +21,10 @@ export class HomePageComponent implements OnInit {
     this.allNotes = this.notesService.getNotes().reverse();
   }
 
-  onLoadEdit() {
-    this.router.navigate('');
+  onLoadEdit(note: Note) {
+    if (note.isAdded) {
+      const routeId = note.getIdString();
+      this.router.navigate(['details', routeId]);
+    }
   }
 }

@@ -70,4 +70,5 @@ export class NotesService {
     const today = new Date();
     return today.getDate() === note.id.getDate() && today.getMonth() === note.id.getMonth();
   }
+
 }

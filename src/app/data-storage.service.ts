@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
 export class DataStorageService {
   constructor(private http: Http, private noteService: NotesService, private authService: AuthService) {}
 
-  storeNotes() {
+  storeNotesToCurrentUser() {
     const token = this.authService.getToken();
-    // return this.http.put('https://betterday-94a8e.firebaseio.com/users.json?auth=' + token, this.noteService.getNotes());
+    return this.http.put('https://betterday-94a8e.firebaseio.com/users.json?auth=' + token, this.noteService.getNotes());
   }
 
   // getNotes() {

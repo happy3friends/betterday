@@ -15,6 +15,7 @@ import { AuthService } from './auth.service';
 import { NewHappinessComponent } from './new-happiness/new-happiness.component';
 import { HttpModule } from '@angular/http';
 import { NotesService } from './notes.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NotesService } from './notes.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [AuthService, NotesService],
+  providers: [AuthService, NotesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,16 +25,11 @@ export class LoginComponent implements OnInit {
     this.loginButtonClicked = true;
 
     setTimeout(() => {
-      let message;
-      let success;
-      if (this.authService.errorMessage === '') {
-        message = 'Sikeres bejelentkezés.';
-        success = true;
-      } else {
-        message = this.authService.errorMessage;
-        success = false;
+      if (this.authService.errorMessage !== '') {
+        const message = this.authService.errorMessage;
+        const success = false;
+        this.alertService.setAlert(message, success);
       }
-      this.alertService.setAlert(message, success);
     }, 500);
   }
 }

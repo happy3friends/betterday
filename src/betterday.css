@@ -195,12 +195,12 @@ nav.navbar .fa-modx {
 
 .feedback-message {
   position: absolute;
+  opacity: 0;
+  animation: 5s alertDown;
   top: -2rem;
   left: 20%;
   right: 20%;
-  box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  animation: 5s alertDown; }
+  box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15); }
 
 .signup {
   min-height: calc(100vh - 56px);

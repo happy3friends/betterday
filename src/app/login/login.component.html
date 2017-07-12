@@ -1,8 +1,3 @@
-<div class="row" *ngIf="loginButtonClicked">
-  <div *ngIf="getAuthService().isAuthenticated()" class="feedback-message alert alert-success">Sikeres bejelentkezés</div>
-  <div *ngIf="!getAuthService().isAuthenticated()" class="feedback-message alert alert-danger">Sikertelen bejelentkezés</div>
-</div>
-
 <div class="login-welcome">
   <i class="fa fa-modx"></i>
   <div class="welcome-text">Üdvözlünk a <span class="brand">BetterDay</span> oldalán<span class="delayed">,<br> <em>jó újra látni!</em></span></div>

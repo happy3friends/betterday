@@ -37,9 +37,16 @@
   100% {
     opacity: 1;
     transform: translateY(-100px); } }
+@keyframes spinner {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(3600deg); } }
 nav.navbar .fa-modx {
   color: #5b928e;
   font-size: 1.6rem; }
+  nav.navbar .fa-modx.spin:hover {
+    animation: spinner ease 1s; }
 
 .overview {
   display: flex;
@@ -226,5 +233,51 @@ nav.navbar .fa-modx {
       color: #5b928e;
       font-weight: 700;
       margin: 0 1rem; }
+
+.about .section1 {
+  background: linear-gradient(#5b928e, #47736f);
+  color: white;
+  padding: 3rem 1rem 3rem 15%;
+  font-size: 3rem;
+  font-weight: 200;
+  animation: floatDown 1.5s ease-out; }
+  .about .section1 span {
+    font-weight: 700;
+    font-size: 4rem;
+    margin-left: 10%; }
+.about iframe {
+  animation: floatDown 1.5s ease-out; }
+.about .section2 {
+  background: linear-gradient(#5b928e, #47736f);
+  padding: 3rem;
+  margin-top: -0.5rem;
+  text-align: center; }
+  .about .section2 .fa-modx {
+    color: white;
+    font-size: 10rem;
+    animation: floatDown 1.5s ease-out; }
+  .about .section2 .marketing-text {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    text-align: center;
+    animation: floatDown 1.5s ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-delay: 0.5s; }
+    .about .section2 .marketing-text .brand {
+      color: white;
+      font-weight: 700;
+      margin: 0 1rem; }
+.about .btn-large-register {
+  background-color: white;
+  padding: 2rem 5rem;
+  min-width: 4rem;
+  margin: 3rem auto 6rem auto;
+  animation: floatDown 1.5s ease-out;
+  color: #5b928e;
+  font-weight: 600;
+  font-size: 2rem;
+  cursor: pointer; }
 
 /*# sourceMappingURL=betterday.css.map */

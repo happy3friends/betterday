@@ -333,6 +333,9 @@ nav.navbar {
 
     }
   }
+  iframe {
+    background-color: black;
+  }
   .section2 {
     background: linear-gradient($diary-main-color,  darken($diary-main-color, 10));
     //display: flex;

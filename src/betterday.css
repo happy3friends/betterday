@@ -245,6 +245,8 @@ nav.navbar .fa-modx {
     font-size: 4rem;
     margin-left: 10%;
     animation: floatDown 1.5s ease-out; }
+.about iframe {
+  background-color: black; }
 .about .section2 {
   background: linear-gradient(#5b928e, #47736f);
   padding: 3rem;

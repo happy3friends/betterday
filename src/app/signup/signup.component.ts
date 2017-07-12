@@ -25,9 +25,4 @@ export class SignupComponent implements OnInit {
     });
     this.regButtonClicked = true;
   }
-
-  getAuthService(): AuthService {
-    return this.authService;
-  }
-
 }

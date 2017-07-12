@@ -1,13 +1,48 @@
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class AuthService {
   token: string;
   errorMessage = '';
+  isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyD633YnU0DJ4DA-V-IcbxCaLL2GAXXMjZY',
+      authDomain: 'betterday-94a8e.firebaseapp.com',
+      databaseURL: 'https://betterday-94a8e.firebaseio.com',
+      projectId: 'betterday-94a8e',
+      storageBucket: 'betterday-94a8e.appspot.com'
+    });
+
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        console.log(user);
+        if (user != null) {
+          this.isLoggedIn.next(true);
+        } else {
+          this.isLoggedIn.next(false);
+        }
+      }
+    );
+  }
+
+  authGuardCheckUserIsLoggedIn() {
+    return new Observable(observer => {
+      const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
+        (user) => {
+          observer.next(user != null);
+          unSubscribeFunction();
+          observer.complete();
+        }
+      );
+    });
+  }
 
   signupUser(email: string, password: string) {
     this.errorMessage = '';
@@ -60,7 +95,6 @@ export class AuthService {
       .then(
         (token: string) => this.token = token
       );
-    return this.token;
   }
 
   isAuthenticated() {

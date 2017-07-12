@@ -21,13 +21,9 @@ export class AppComponent implements OnInit {
               private alertService: AlertService) { }
 
   ngOnInit() {
-    firebase.initializeApp({
-      apiKey: 'AIzaSyD633YnU0DJ4DA-V-IcbxCaLL2GAXXMjZY',
-      authDomain: 'betterday-94a8e.firebaseapp.com',
-      databaseURL: 'https://betterday-94a8e.firebaseio.com',
-      projectId: 'betterday-94a8e',
-      storageBucket: 'betterday-94a8e.appspot.com'
-    });
+
+
+
   }
 
   onLogout() {

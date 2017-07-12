@@ -2,12 +2,12 @@ import { Note } from './note';
 
 export class User {
   e_mail: string;
-  daysNotes: Note[] = [];
+  // daysNotes: Note[] = [];
   days = 21;
-  // doing_exercise = true;
-  // doing_meditation = true;
-  // doing_kindness = true;
-  // notes = [];
+  doing_exercise = true;
+  doing_meditation = true;
+  doing_kindness = true;
+  notes = [];
 
   constructor (e_mail: string) {
     this.e_mail = e_mail;

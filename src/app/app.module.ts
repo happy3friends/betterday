@@ -38,4 +38,5 @@ import { AuthGuard } from './auth-guard.service';
   providers: [AuthService, NotesService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -9,7 +9,8 @@
           'two': note.getDailySuccess() === 2,
           'three': note.getDailySuccess() === 3,
           'four': note.getDailySuccess() === 4
-  }">
+        }"
+        [ngStyle]="{'cursor': getCursorType(note)}">
     <div class="date">{{note.id.getMonth() + 1}}.{{note.id.getDate()}}.</div>
   </div>
 

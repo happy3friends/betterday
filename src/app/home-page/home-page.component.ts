@@ -27,4 +27,14 @@ export class HomePageComponent implements OnInit {
       this.router.navigate(['details', routeId]);
     }
   }
+
+  getCursorType(note: Note) {
+    let cursorType: string;
+    if (note.isAdded) {
+      cursorType = 'pointer';
+    } else {
+      cursorType = 'default';
+    }
+    return cursorType;
+  }
 }

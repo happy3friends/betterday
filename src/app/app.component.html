@@ -8,31 +8,31 @@
     <a class="navbar-brand" routerLink="home"><i class="fa fa-modx mr-3"></i>BetterDay</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="home">Áttekintés</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="diary">Naplóm</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="new"><i class="fa fa-plus mr-1"></i>Új bejegyzés</a>
-        </li>
-
+        <ng-template [ngIf]="authService.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="home">Áttekintés</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="diary">Naplóm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="new"><i class="fa fa-plus mr-1"></i>Új bejegyzés</a>
+          </li>
+        </ng-template>
         <!--<li class="nav-item">-->
           <!--<a class="nav-link" href="#">Beállítások</a>-->
         <!--</li>-->
       </ul>
       <ul class="navbar-nav navbar-toggler-right">
-        <!--<ng-template [ngIf]="!authService.isAuthenticated()">-->
+        <ng-template [ngIf]="!authService.isAuthenticated()">
           <li class="nav-item">
             <a routerLink="/login" class="nav-link" href="#">Bejelentkezés</a>
           </li>
           <li class="nav-item">
             <a routerLink="/signup" class="nav-link" href="#">Regisztráció</a>
           </li>
-        <!--</ng-template>-->
-        <!--<li class="nav-item"><a style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Kijelentkezés</a></li>-->
+        </ng-template>
+        <li class="nav-item"><a class="nav-link" style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Kijelentkezés</a></li>
       </ul>
     </div>
   </div>

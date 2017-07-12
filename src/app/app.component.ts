@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { NotesService } from './notes.service';
 import { Note } from './note';
 import { DataStorageService } from './data-storage.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   title = 'Better Day app';
   notes: Note[];
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     firebase.initializeApp({
@@ -26,5 +28,8 @@ export class AppComponent implements OnInit {
     });
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
 
 }

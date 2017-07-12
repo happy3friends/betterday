@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  regButtonClicked = false;
 
   constructor(private authService: AuthService) { }
 
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
     firebase.database().ref('users/').push({
       email
     });
+    this.regButtonClicked = true;
   }
 
   getAuthService(): AuthService {

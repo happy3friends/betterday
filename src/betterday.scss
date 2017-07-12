@@ -44,6 +44,24 @@ $kindness-color: #D57101;
     transform: translateY(0);
   }
 }
+@keyframes alertDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
 
 nav.navbar {
   .fa-modx {
@@ -223,17 +241,16 @@ nav.navbar {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
+  margin: 3rem;
   .fa-modx {
     color: $diary-main-color;
-    max-font-size: 10rem;
-    font-size: 30vw;
+    font-size: 10rem;
     animation: 1.5s ease-out spinIn;
   }
   .welcome-text {
     //animation: 1.5s ease-out fadeIn;
-    margin-top: 1rem;
-    font-size: 1.9rem;
+    margin-top: 2rem;
+    font-size: 2rem;
     font-weight: 300;
     color: rgba(28, 48, 45, 0.6);
     text-align: center;
@@ -252,6 +269,8 @@ nav.navbar {
 
 .feedback-message {
   position: absolute;
+  opacity: 0;
+  animation: 5s alertDown;
   top: -2rem;
   left: 20%;
   right: 20%;
@@ -285,11 +304,5 @@ nav.navbar {
       font-weight: 700;
       margin: 0 1rem;
     }
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .login-welcome .fa-modx {
-    font-size: 10rem;
   }
 }

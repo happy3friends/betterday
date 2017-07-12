@@ -26,7 +26,7 @@
     transform: translateY(0); } }
 @keyframes alertDown {
   0% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100px); }
   15% {
     opacity: 1;
@@ -35,7 +35,7 @@
     opacity: 1;
     transform: translateY(0); }
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100px); } }
 nav.navbar .fa-modx {
   color: #5b928e;

@@ -1,6 +1,7 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, Output } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
+import { AlertService } from '../alert.service';
 
 @Injectable()
 @Component({
@@ -9,9 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  regButtonClicked = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,19 @@ export class SignupComponent implements OnInit {
     firebase.database().ref('users/').push({
       email
     });
-    this.regButtonClicked = true;
+
+    setTimeout(() => {
+      let message;
+      let success;
+      if (this.authService.errorMessage === '') {
+        message = 'Sikeres regisztráció, most már bejelentkezhet.';
+        success = true;
+      } else {
+        message = this.authService.errorMessage;
+        success = false;
+      }
+      this.alertService.setAlert(message, success);
+    }, 500);
+
   }
 }

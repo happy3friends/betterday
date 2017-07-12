@@ -46,7 +46,7 @@ $kindness-color: #D57101;
 }
 @keyframes alertDown {
   0% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100px);
   }
   15% {
@@ -58,7 +58,7 @@ $kindness-color: #D57101;
     transform: translateY(0);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100px);
   }
 }

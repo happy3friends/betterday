@@ -43,8 +43,6 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="row" *ngIf="showAlert">
-  <div class="feedback-message alert"
-       ngClass="['alert-success': {{ alertSuccess }}, 'alert-danger': {{ !alertSuccess }}]"
-       role="alert">{{ alertMessage }}</div>
+<div class="row" *ngIf="getAlertService().showAlert">
+  <div class="feedback-message alert" ngClass="{{ getAlertService().alertSuccess }}" role="alert">{{ getAlertService().alertMessage }}</div>
 </div>

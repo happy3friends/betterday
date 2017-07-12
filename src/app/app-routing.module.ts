@@ -6,15 +6,16 @@ import {HomePageComponent} from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from 'app/signup/signup.component';
 import {NewHappinessComponent} from './new-happiness/new-happiness.component';
+import { AuthGuard } from './auth-guard.service';
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent },
-  { path: 'diary', component: DiaryPageComponent },
-  { path: 'new', component: NewHappinessComponent },
-  { path: 'details/:id', component: HappyDetailsCardComponent }
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
+  { path: 'diary', component: DiaryPageComponent, canActivate: [AuthGuard] },
+  { path: 'new', component: NewHappinessComponent, canActivate: [AuthGuard] },
+  { path: 'details/:id', component: HappyDetailsCardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

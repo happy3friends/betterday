@@ -160,14 +160,15 @@ nav.navbar .fa-modx {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 3rem; }
+  margin: 2rem; }
   .login-welcome .fa-modx {
     color: #5b928e;
-    font-size: 10rem;
+    max-font-size: 10rem;
+    font-size: 30vw;
     animation: 1.5s ease-out spinIn; }
   .login-welcome .welcome-text {
-    margin-top: 2rem;
-    font-size: 2rem;
+    margin-top: 1rem;
+    font-size: 1.9rem;
     font-weight: 300;
     color: rgba(28, 48, 45, 0.6);
     text-align: center; }
@@ -182,8 +183,10 @@ nav.navbar .fa-modx {
 
 .feedback-message {
   position: absolute;
-  left: 0;
-  right: 0; }
+  top: -2rem;
+  left: 20%;
+  right: 20%;
+  box-shadow: 1px 1px 17px 3px rgba(0, 0, 0, 0.15); }
 
 .signup {
   min-height: calc(100vh - 56px);
@@ -210,5 +213,9 @@ nav.navbar .fa-modx {
       color: #5b928e;
       font-weight: 700;
       margin: 0 1rem; }
+
+@media screen and (min-width: 1000px) {
+  .login-welcome .fa-modx {
+    font-size: 10rem; } }
 
 /*# sourceMappingURL=betterday.css.map */

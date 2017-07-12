@@ -14,7 +14,6 @@ export class AuthService {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
         (response) => {
-          alert('Jelentkezz be');
           this.router.navigate(['/login']);
         }
       )
@@ -23,7 +22,7 @@ export class AuthService {
           console.log(error);
           this.errorMessage = error.message;
         }
-      )
+      );
   }
 
   loginUser(email: string, password: string) {

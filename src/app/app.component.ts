@@ -4,22 +4,21 @@ import { NotesService } from './notes.service';
 import { Note } from './note';
 import { DataStorageService } from './data-storage.service';
 import { AuthService } from './auth.service';
+import { AlertService } from './alert.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [NotesService, DataStorageService]
+  providers: [NotesService, DataStorageService, AlertService]
 })
 export class AppComponent implements OnInit {
   title = 'Better Day app';
   notes: Note[];
-  showAlert = false;
-  alertMessage = '';
-  alertSuccess: boolean;
 
   constructor(private notesService: NotesService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     firebase.initializeApp({
@@ -36,13 +35,11 @@ export class AppComponent implements OnInit {
   }
 
   getAuthService(): AuthService {
-    return this.authService
+    return this.authService;
   }
 
-  setAlert(message: string, succes: boolean) {
-    this.alertMessage = message;
-    this.alertSuccess = succes;
-    this.showAlert = true;
+  getAlertService(): AlertService {
+    return this.alertService;
   }
 
 }

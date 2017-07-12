@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
+import { NotesService } from '../notes.service';
 
 @Injectable()
 @Component({
@@ -11,7 +12,8 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
   regButtonClicked = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private notesService: NotesService) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,8 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password);
     firebase.database().ref('users/').push({
-      email
+      email,
+      'notes': this.notesService.getNotes()
     });
     this.regButtonClicked = true;
   }

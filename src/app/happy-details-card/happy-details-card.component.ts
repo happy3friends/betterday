@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotesService} from '../notes.service';
 import {Note} from '../note';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -16,21 +16,21 @@ export class HappyDetailsCardComponent implements OnInit {
   editable: boolean;
   // note: Note;
 
-  constructor(
-    private route: ActivatedRoute,
-    private notesService: NotesService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private notesService: NotesService) {
   }
 
   ngOnInit() {
     this.notes = this.notesService.getAddedNotes();
     const id = this.route.snapshot.params['id'];
     const editIndex = this.notes.findIndex(note => (
-          this.getIdDate(id).getDate() === note.id.getDate() &&
-          this.getIdDate(id).getMonth() === note.id.getMonth()
+      this.getIdDate(id).getDate() === note.id.getDate() &&
+      this.getIdDate(id).getMonth() === note.id.getMonth()
     ));
-    debugger
-    this.editNote = this.notes[editIndex];
-    this.editable = this.notesService.isEditable(this.editNote);
+    const editedItem = this.notes[editIndex];
+    this.editable = this.notesService.isEditable(editedItem);
+    this.editNote = editedItem;
   }
 
   getIdDate(dateString: string): Date {
@@ -40,15 +40,8 @@ export class HappyDetailsCardComponent implements OnInit {
     return idDate;
   }
 
-  onSubmit(form: NgForm) {
-    this.editedNote.setNoteData(
-      form.value.gratitude1,
-      form.value.gratitude2,
-      form.value.gratitude3,
-      form.value.exercise !== '',
-      form.value.meditation !== '',
-      form.value.kindness !== ''
-    );
-    this.notesService.editNote(this.editedNote);
+  onSubmit() {
+    this.notesService.editNote(this.editNote);
+    this.router.navigate(['/']);
   }
 }

@@ -26,9 +26,8 @@ export class AuthService {
         if (user != null) {
           if (this.currentUser == null) {
             if (!this.runAuthGuardCheck) {
-              this.fillUserNotes(user).subscribe(() => {
-                this.currentUser = user;
-              });
+              this.currentUser = user;
+              this.fillUserNotes(user).subscribe(() => {});
             }
             this._isLoggedIn.next(true);
           } else {
@@ -47,15 +46,16 @@ export class AuthService {
     return new Observable(observer => {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
-          if (this.currentUser == null && user != null) {
-            this.currentUser = user;
-            this.fillUserNotes(user).subscribe(() => {
-              this.runAuthGuardCheck = false;
-
-              observer.next(true);
-              unSubscribeFunction();
-              observer.complete();
-            });
+          if (user != null) {
+            if (this.currentUser == null) {
+              this.currentUser = user;
+              this.fillUserNotes(user).subscribe(() => {
+                this.runAuthGuardCheck = false;
+              });
+            }
+            observer.next(true);
+            unSubscribeFunction();
+            observer.complete();
           } else {
             this.runAuthGuardCheck = false;
 

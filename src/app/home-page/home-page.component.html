@@ -10,7 +10,7 @@
           'three': note.getDailySuccess() === 3,
           'four': note.getDailySuccess() === 4
         }"
-        [ngStyle]="{'cursor': getCursorType(note)}">
+       [ngStyle]="{'cursor': getCursorType(note)}">
     <div class="date">{{note.getIdDate() | date: 'M.d.'}}</div>
   </div>
 
@@ -19,11 +19,11 @@
 <hr>
 <h5 class="mt-3">Legutóbbi bejegyzések</h5>
 <app-happy-card *ngIf="addedNotes.length > 0"
-                routerLink="/details/{{addedNotes[0].id}}"></app-happy-card>
+                routerLink="/details/{{addedNotes[0].id}}" [note]="addedNotes[0]"></app-happy-card>
 <app-happy-card *ngIf="addedNotes.length > 1"
-                routerLink="/details/{{addedNotes[1].id}}"></app-happy-card>
+                routerLink="/details/{{addedNotes[1].id}}" [note]="addedNotes[1]"></app-happy-card>
 <app-happy-card *ngIf="addedNotes.length > 2"
-                routerLink="/details/{{addedNotes[2].id}}"></app-happy-card>
+                routerLink="/details/{{addedNotes[2].id}}" [note]="addedNotes[2]"></app-happy-card>
 
 <div>
   <button class="all-notes-button btn btn-large btn-block mb-5" routerLink="/diary">Összes bejegyzés</button>

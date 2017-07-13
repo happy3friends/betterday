@@ -4,14 +4,14 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-xl-4 offset-sm-2 offset-md-3 offset-xl-4">
-      <form (ngSubmit)="onSingup(f)" #f="ngForm">
+      <form (ngSubmit)="onSingup(f,f.valid)" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" class="form-control" id="email" name="email" ngModel>
+          <input type="email" class="form-control" id="email" name="email" ngModel required>
         </div>
         <div class="form-group">
           <label for="password">Jelszó</label>
-          <input type="password" class="form-control" id="password" name="password" ngModel>
+          <input type="password" class="form-control" id="password" name="password" ngModel required>
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid" style="margin-bottom: 10rem;">Regisztráció</button>
       </form>

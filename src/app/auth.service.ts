@@ -27,6 +27,7 @@ export class AuthService {
         if (user != null) {
           if (this._currentUser == null) {
             // ha nincs tarolva jelenlegi user akkor feltoltjuk a feltoltjuk a note-kat
+            // TODO hiba agat kezelni!!!
             this.fillUserNotes(user).subscribe(() => {
               // miutan feltolttuk a user-t taroljuk
               this._currentUser = user;
@@ -59,6 +60,7 @@ export class AuthService {
         (user) => {
           if (user != null) {
             // ha belepett userrel val dolgunk, akkor kitoltjuk az note-kat
+            // TODO hiba agat kezelni!!!
             this.fillUserNotes(user).subscribe(() => {
               if (this._currentUser == null) {
                 // ha nincs tarolva jelenlegi user akkor taroljuk
@@ -125,11 +127,21 @@ export class AuthService {
     this.runFillUserNotes = new Observable<void>((observer) => {
       // keszitunk egy stream-et amit az adatkuldes utan le is zarunk ...
       firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
-        this.notesService.getNotesFromFB((snapshot.val() != null && snapshot.val()['notes'] != null) ? snapshot.val().notes : []);
-        // toroljuk a stream-et tarolo osztalyvaltozot...
-        this.runFillUserNotes = null;
-        observer.next();
-        observer.complete();
+        const completeFn = (_observer) => {
+          // toroljuk a stream-et tarolo osztalyvaltozot...
+          this.runFillUserNotes = null;
+          _observer.next();
+          _observer.complete();
+        };
+        if (snapshot.val() == null || snapshot.val()['notes'] == null) {
+          // TODO hiba agat kezelni!!!
+          this.notesService.saveNotesToFB(user.uid).then(
+            () => completeFn(observer)
+          );
+        } else {
+          this.notesService.getNotesFromFB(snapshot.val().notes);
+          completeFn(observer);
+        }
       }, (error) => {
         // hibakezeles (ha fb hibat dob)
         this.runFillUserNotes = null;

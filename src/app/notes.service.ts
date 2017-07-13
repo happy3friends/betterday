@@ -8,6 +8,10 @@ export class NotesService {
   private _addedNotes: Note[] = [];
 
   constructor() {
+    this.initNewNotesArray();
+  }
+
+  private initNewNotesArray() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
       newDate.setDate(newDate.getDate() + i);
@@ -39,7 +43,11 @@ export class NotesService {
     });
   }
 
-  saveNotesToFB(userId: string) {
+  saveNotesToFB(userId: string, isNew = false) {
+    if (isNew) {
+      this._notes = [];
+      this.initNewNotesArray();
+    }
     return firebase.database().ref('users/' + userId).set({
       'notes': this._notes
     });

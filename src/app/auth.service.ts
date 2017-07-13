@@ -7,9 +7,10 @@ import { NotesService } from './notes.service';
 
 @Injectable()
 export class AuthService {
-  token: string;
   errorMessage = '';
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
+  private currentUser;
+  private runAuthGuardCheck = false;
 
   constructor(private router: Router, private notesService: NotesService) {
     firebase.initializeApp({
@@ -23,21 +24,44 @@ export class AuthService {
     firebase.auth().onAuthStateChanged(
       (user) => {
         if (user != null) {
-          this._isLoggedIn.next(true);
+          if (this.currentUser == null) {
+            if (!this.runAuthGuardCheck) {
+              this.fillUserNotes(user).subscribe(() => {
+                this.currentUser = user;
+              });
+            }
+          } else {
+            this._isLoggedIn.next(true);
+          }
         } else {
           this._isLoggedIn.next(false);
+          this.currentUser = null;
         }
       }
     );
   }
 
   authGuardCheckUserIsLoggedIn() {
+    this.runAuthGuardCheck = true;
     return new Observable(observer => {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
-          observer.next(user != null);
-          unSubscribeFunction();
-          observer.complete();
+          if (this.currentUser == null) {
+            this.currentUser = user;
+            this.fillUserNotes(user).subscribe(() => {
+              this.runAuthGuardCheck = false;
+
+              observer.next(true);
+              unSubscribeFunction();
+              observer.complete();
+            });
+          } else {
+            this.runAuthGuardCheck = false;
+
+            observer.next(user != null);
+            unSubscribeFunction();
+            observer.complete();
+          }
         }
       );
     });
@@ -65,13 +89,6 @@ export class AuthService {
       .then(
         (response) => {
           this.router.navigate(['/']);
-          firebase.auth().currentUser.getIdToken()
-            .then(
-              (token: string) => this.token = token
-            );
-          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
-            this.notesService.getNotesFromFB(snapshot.val().notes);
-          });
         }
       )
       .catch(
@@ -81,6 +98,19 @@ export class AuthService {
       );
   }
 
+  private fillUserNotes(user) {
+    return new Observable<void>((observer) => {
+      firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
+        this.notesService.getNotesFromFB(snapshot.val().notes);
+        observer.next();
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+        observer.complete()
+      });
+    });
+  }
+
   logout() {
     firebase.auth().signOut()
       .then(
@@ -88,18 +118,10 @@ export class AuthService {
           this.router.navigate(['/login']);
         }
       );
-    this.token = null;
   }
 
   getUserId() {
-    return firebase.auth().currentUser.uid;
-  }
-
-  getToken() {
-    firebase.auth().currentUser.getIdToken()
-      .then(
-        (token: string) => this.token = token
-      );
+    return this.currentUser.uid;
   }
 
   get isLoggedIn(): BehaviorSubject<boolean> {

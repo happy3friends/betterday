@@ -38,7 +38,7 @@ import { AlertService } from './alert.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [NotesService, AuthService, AuthGuard, AlertService],
+  providers: [NotesService, AlertService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

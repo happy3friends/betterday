@@ -18,18 +18,4 @@ export class User {
       this.notes.push(newNote);
     }
   }
-
-  // setNoteTypes (days: number, startDay: Date) {
-  //   this.days = days;
-  //   this.doing_exercise = true;
-  //   this.doing_meditation = true;
-  //   this.doing_kindness = true;
-  //   this.startDay = startDay;
-  //
-  //   this.notes = [];
-  //   for (let i = 0; i < days; i++) {
-  //     const newNote = new Note(this.startDay, this.doing_exercise, this.doing_meditation, this.doing_kindness);
-  //     this.notes.push(newNote);
-  //   }
-  // }
 }

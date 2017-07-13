@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   token: string;
   errorMessage = '';
-  isLoggedIn = new BehaviorSubject<boolean>(false);
+  private _isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router) {
     firebase.initializeApp({
@@ -22,9 +22,9 @@ export class AuthService {
     firebase.auth().onAuthStateChanged(
       (user) => {
         if (user != null) {
-          this.isLoggedIn.next(true);
+          this._isLoggedIn.next(true);
         } else {
-          this.isLoggedIn.next(false);
+          this._isLoggedIn.next(false);
         }
       }
     );
@@ -101,9 +101,9 @@ export class AuthService {
         (token: string) => this.token = token
       );
   }
-
-  isAuthenticated() {
-    return this.token != null;
+  
+  get isLoggedIn(): BehaviorSubject<boolean> {
+    return this._isLoggedIn;
   }
 }
 

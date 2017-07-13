@@ -58,9 +58,11 @@ export class NotesService {
     return this._addedNotes;
   }
 
-  getNotesFromFB(notes: string[]) {
-    notes.forEach(note => {
-      console.log('id: ' + JSON.parse(note).id);
+  getNotesFromFB(notesPromise: Promise<string[]>) {
+    notesPromise.then(notes => {
+      notes.forEach(note => {
+        console.log('id: ' + JSON.parse(note).id);
+      })
     });
   }
 

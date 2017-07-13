@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { AlertService } from '../alert.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   onLogin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.loginUser(email, password).then(() => {
+    this.authService.loginUser(email, password).then(notesPromise => {
       if (this.authService.errorMessage !== '') {
         const message = this.authService.errorMessage;
         const success = false;

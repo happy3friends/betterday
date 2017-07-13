@@ -69,8 +69,7 @@ export class AuthService {
               (token: string) => this.token = token
             );
           firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
-           // const a = (snapshot.val().notes).toString();
-           //  JSON.parse(a);
+            // this.notesServece.getNotesFromFB(snapshot.val().notes);
           });
         }
       )

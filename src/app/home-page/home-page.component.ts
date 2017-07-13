@@ -18,7 +18,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.addedNotes = this.notesService.addedNotes;
     this.allNotes = this.notesService.notes;
-    console.log(this.addedNotes.length);
   }
 
   onLoadEdit(note: Note) {

@@ -19,6 +19,7 @@ export class NotesService {
   }
 
   get notes(): Note[] {
+    this._notes.sort((prev, current) => prev.id < current.id ? -1 : 1);
     return  this._notes;
   }
 

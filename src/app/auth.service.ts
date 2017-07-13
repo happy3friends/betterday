@@ -43,6 +43,11 @@ export class AuthService {
 
   authGuardCheckUserIsLoggedIn() {
     this.runAuthGuardCheck = true;
+    const obsReturn = (observer, result: boolean, unsubscriberFn: Function) => {
+      observer.next(result);
+      unsubscriberFn();
+      observer.complete();
+    };
     return new Observable(observer => {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
@@ -51,17 +56,15 @@ export class AuthService {
               this.currentUser = user;
               this.fillUserNotes(user).subscribe(() => {
                 this.runAuthGuardCheck = false;
-                observer.next(true);
-                unSubscribeFunction();
-                observer.complete();
+                obsReturn(observer, true, unSubscribeFunction);
               });
+            } else {
+              obsReturn(observer, true, unSubscribeFunction);
             }
           } else {
             this.runAuthGuardCheck = false;
 
-            observer.next(false);
-            unSubscribeFunction();
-            observer.complete();
+            obsReturn(observer, false, unSubscribeFunction);
           }
         }
       );

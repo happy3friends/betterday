@@ -51,11 +51,11 @@ export class AuthService {
               this.currentUser = user;
               this.fillUserNotes(user).subscribe(() => {
                 this.runAuthGuardCheck = false;
+                observer.next(true);
+                unSubscribeFunction();
+                observer.complete();
               });
             }
-            observer.next(true);
-            unSubscribeFunction();
-            observer.complete();
           } else {
             this.runAuthGuardCheck = false;
 

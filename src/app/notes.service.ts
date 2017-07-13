@@ -37,7 +37,6 @@ export class NotesService {
     notes.forEach(note => {
       this._notes.push(new Note(note));
     });
-    console.log(this._notes); // TODO
   }
 
   saveNotesToFB(userId: string) {

@@ -3,6 +3,7 @@ import { Note } from './note';
 import { AuthService } from './auth.service';
 import { AlertService } from './alert.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { NotesService } from './notes.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   isLoggedIn$: BehaviorSubject<boolean>;
 
   constructor(private authService: AuthService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private notesService: NotesService) {
     this.isLoggedIn$ = authService.isLoggedIn;
   }
 
@@ -25,8 +27,8 @@ export class AppComponent implements OnInit {
     this.authService.logout();
   }
 
-  getAuthService(): AuthService {
-    return this.authService;
+  getNotesService(): NotesService {
+    return this.notesService;
   }
 
   getAlertService(): AlertService {

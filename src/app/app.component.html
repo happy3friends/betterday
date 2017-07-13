@@ -7,7 +7,7 @@
     </button>
     <a class="navbar-brand" routerLink="home"><i class="fa fa-modx spin"></i><span class="ml-3">BetterDay</span></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" *ngIf="getAuthService().isAuthenticated(); else emptymenu">
+      <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn$ | async; else emptymenu">
           <li class="nav-item">
             <a class="nav-link" routerLink="home">Áttekintés</a>
           </li>
@@ -27,7 +27,7 @@
         </ul>
       </ng-template>
 
-      <ul class="navbar-nav" *ngIf="!getAuthService().isAuthenticated()">
+      <ul class="navbar-nav" *ngIf="!isLoggedIn$ | async">
           <li class="nav-item">
             <a routerLink="/login" class="nav-link" href="#">Bejelentkezés</a>
           </li>
@@ -35,7 +35,7 @@
             <a routerLink="/signup" class="nav-link" href="#">Regisztráció</a>
           </li>
       </ul>
-      <ul class="navbar-nav" *ngIf="getAuthService().isAuthenticated()">
+      <ul class="navbar-nav" *ngIf="isLoggedIn$ | async">
         <li class="nav-item">
           <a class="nav-link" style="cursor: pointer;" (click)="onLogout()">Kijelentkezés</a>
         </li>

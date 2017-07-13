@@ -4,6 +4,7 @@ import { Note } from './note';
 import { DataStorageService } from './data-storage.service';
 import { AuthService } from './auth.service';
 import { AlertService } from './alert.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,12 @@ import { AlertService } from './alert.service';
 })
 export class AppComponent implements OnInit {
   notes: Note[];
+  isLoggedIn$: BehaviorSubject<boolean>;
 
   constructor(private authService: AuthService,
-              private alertService: AlertService) { }
+              private alertService: AlertService) {
+    this.isLoggedIn$ = authService.isLoggedIn;
+  }
 
   ngOnInit() {
   }

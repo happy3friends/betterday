@@ -11,6 +11,9 @@ import { AlertService } from '../alert.service';
 export class LoginComponent implements OnInit {
   loginButtonClicked = false;
 
+  email = 'teszt@teszt.hu';
+  password = 'teszt123';
+
   constructor(private authService: AuthService,
               private alertService: AlertService) { }
 

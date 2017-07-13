@@ -27,7 +27,7 @@
         </ul>
       </ng-template>
 
-      <ul class="navbar-nav" *ngIf="!authService.isAuthenticated()">
+      <ul class="navbar-nav" *ngIf="!getAuthService().isAuthenticated()">
           <li class="nav-item">
             <a routerLink="/login" class="nav-link" href="#">Bejelentkezés</a>
           </li>

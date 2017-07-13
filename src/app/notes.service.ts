@@ -1,5 +1,4 @@
 import { Note } from './note';
-import { current } from 'codelyzer/util/syntaxKind';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 

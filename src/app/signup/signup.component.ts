@@ -1,10 +1,9 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
 import { NotesService } from '../notes.service';
 import { AlertService } from '../alert.service';
 
-@Injectable()
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,7 +18,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignup(form: NgForm) {
+  onSingup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
     this.authService.signupUser(email, password).then(

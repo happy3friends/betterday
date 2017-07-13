@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from 'app/signup/signup.component';
 import {NewHappinessComponent} from './new-happiness/new-happiness.component';
 import { AuthGuard } from './auth-guard.service';
-import {AboutComponent} from "./about/about.component";
+import {AboutComponent} from './about/about.component';
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },

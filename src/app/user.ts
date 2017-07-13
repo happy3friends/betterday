@@ -2,7 +2,6 @@ import { Note } from './note';
 
 export class User {
   e_mail: string;
-  // daysNotes: Note[] = [];
   days = 21;
   doing_exercise = true;
   doing_meditation = true;

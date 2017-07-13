@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class AuthService {
@@ -84,11 +83,6 @@ export class AuthService {
   }
 
   logout() {
-    // firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-    //    'email': firebase.auth().currentUser.email,
-    //   'notes': this.notesService.getNotesJSON()
-    // });
-
     firebase.auth().signOut()
       .then(
         (response) => {

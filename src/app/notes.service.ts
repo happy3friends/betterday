@@ -58,30 +58,19 @@ export class NotesService {
     return this._addedNotes;
   }
 
-  getNotesJSON() {
-    const myNotes = [];
-    this._notes.forEach(note => {
-      myNotes.push(JSON.stringify(note))
-    });
-    return myNotes;
-    // console.log(testDate);
-    // const myDate = new Date(testDate);
-    // console.log(myDate);
-  }
-
-  setNotes(notes: string[]) {
+  getNotesFromFB(notes: string[]) {
     notes.forEach(note => {
       console.log('id: ' + JSON.parse(note).id);
     });
   }
 
-  getNotesFromFB() {
-
-  }
-
   saveNotesToFB() {
+    const jsonNotes = [];
+    this._notes.forEach(note => {
+      jsonNotes.push(JSON.stringify(note))
+    });
     firebase.database().ref('users/' + this.authService.getUserId()).set({
-      'notes': this.getNotesJSON()
+      'notes': jsonNotes
     });
   }
 

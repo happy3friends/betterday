@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NotesService} from '../notes.service';
 import {Note} from '../note';
 import {ActivatedRoute, Router} from '@angular/router';
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-happy-details-card',
@@ -11,9 +10,7 @@ import {NgForm} from "@angular/forms";
 })
 export class HappyDetailsCardComponent implements OnInit {
   editNote: Note;
-  editedNote: Note;
   editable: boolean;
-  // note: Note;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

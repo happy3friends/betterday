@@ -23,10 +23,7 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password).then(
       () => {
-        firebase.database().ref('users/' + this.authService.getUserId()).set({
-          email,
-          'notes': this.notesService.getNotesJSON()
-        });
+        this.notesService.saveNotesToFB();
         let message;
         let success;
         if (this.authService.errorMessage === '') {

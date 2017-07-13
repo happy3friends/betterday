@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import { NotesService } from '../notes.service';
 import { Note } from '../note';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-new-happiness',
@@ -13,7 +14,8 @@ export class NewHappinessComponent implements OnInit {
   myNote = new Note(new Date(), true, true, true);
 
   constructor(private notesService: NotesService,
-              private router: Router) { }
+              private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -29,7 +31,7 @@ export class NewHappinessComponent implements OnInit {
       form.value.kindness !== ''
     );
     this.notesService.editNote(this.myNote);
-
+    this.notesService.saveNotesToFB(this.authService.getUserId());
     this.router.navigate(['/']);
   }
 

@@ -1,5 +1,5 @@
 export class Note {
-  id: Date;
+  private _id: Date;
   gratitudes = [];
   gratitudes_done = false;
   exercise_done: boolean = null;
@@ -8,7 +8,7 @@ export class Note {
   isAdded = false;
 
   constructor(id: Date, doing_exercise: boolean, doing_meditation: boolean, doing_kindness: boolean ) {
-    this.id = id;
+    this._id = id;
 
     this.gratitudes[0] = '';
     this.gratitudes[1] = '';
@@ -66,10 +66,13 @@ export class Note {
 
   getIdString() {
     let idString = '';
-    idString = idString + ((this.id.getMonth() + 1) < 10 ? '0' + (this.id.getMonth() + 1) : this.id.getMonth() + 1);
-    idString = idString + (this.id.getDate() < 10 ? '0' + this.id.getDate() : this.id.getDate());
+    idString = idString + ((this._id.getMonth() + 1) < 10 ? '0' + (this._id.getMonth() + 1) : this._id.getMonth() + 1);
+    idString = idString + (this._id.getDate() < 10 ? '0' + this._id.getDate() : this._id.getDate());
     return idString;
   }
 
 
+  get id(): Date {
+    return this._id;
+  }
 }

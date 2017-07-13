@@ -10,7 +10,6 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./happy-details-card.component.css']
 })
 export class HappyDetailsCardComponent implements OnInit {
-  notes: Note[];
   editNote: Note;
   editedNote: Note;
   editable: boolean;
@@ -22,15 +21,13 @@ export class HappyDetailsCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notes = this.notesService.getAddedNotes();
     const id = this.route.snapshot.params['id'];
-    const editIndex = this.notes.findIndex(note => (
+    const editIndex = this.notesService.addedNotes.findIndex(note => (
       this.getIdDate(id).getDate() === note.id.getDate() &&
       this.getIdDate(id).getMonth() === note.id.getMonth()
     ));
-    const editedItem = this.notes[editIndex];
-    this.editable = this.notesService.isEditable(editedItem);
-    this.editNote = editedItem;
+    this.editNote = this.notesService.addedNotes[editIndex];
+    this.editable = this.notesService.isEditable(this.editNote);
   }
 
   getIdDate(dateString: string): Date {
@@ -42,6 +39,7 @@ export class HappyDetailsCardComponent implements OnInit {
 
   onSubmit() {
     this.notesService.editNote(this.editNote);
+    this.notesService.saveNotesToFB();
     this.router.navigate(['/']);
   }
 }

@@ -1,55 +1,67 @@
 import { Note } from './note';
 import { current } from 'codelyzer/util/syntaxKind';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class NotesService {
 
-  private notes: Note[] = [];
-  private addedNotes = [];
+  private _notes: Note[] = [];
+  private _addedNotes: Note[] = [];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
       newDate.setDate(newDate.getDate() + i - 5);
       const newNote = new Note(newDate, true, true, true);
-      this.notes.push(newNote);
+      this._notes.push(newNote);
     }
 
-    this.notes[0].setNoteData(
+    this._notes[0].setNoteData(
       'Hogy fel tudtam kelni',
       'Hogy nem fogyott el a kávé',
       'Hogy felfértem a villamosra munkába menet',
       true, true, true);
 
-    this.notes[1].setNoteData(
+    this._notes[1].setNoteData(
       'Tudtam aludni a meleg ellenére',
       'Péntek van',
       '',
       true, true, true);
 
-    this.notes[3].setNoteData(
+    this._notes[3].setNoteData(
       'A pizzafutár 20 perc alatt ideért',
       'Nem merült le a mobilom útközben',
       'Anyukám húslevest főzőtt ebédre',
       false, true, false);
 
-    this.notes[4].setNoteData(
+    this._notes[4].setNoteData(
       '',
       '',
       '',
       false, false, true);
 
-    this.notes.reverse();
+    this._notes.reverse();
   }
 
-  getNotes() {
-    return this.notes.slice();
+  get notes(): Note[] {
+    return this._notes;
+  }
+
+
+  get addedNotes(): Note[] {
+    this._addedNotes = [];
+    this._notes.forEach(note => {
+      if (note.isAdded) {
+        this._addedNotes.push(note);
+      }
+    });
+    return this._addedNotes;
   }
 
   getNotesJSON() {
     const myNotes = [];
-    this.getNotes().forEach(note => {
+    this._notes.forEach(note => {
       myNotes.push(JSON.stringify(note))
     });
     return myNotes;
@@ -64,23 +76,20 @@ export class NotesService {
     });
   }
 
-  getAddedNotes() {
-    this.addedNotes = [];
+  getNotesFromFB() {
 
-    this.notes.forEach(note => {
-      if (note.isAdded) {
-        this.addedNotes.push(note);
-      }
-    });
-
-    return this.addedNotes.slice();
   }
 
+  saveNotesToFB() {
+    firebase.database().ref('users/' + this.authService.getUserId()).set({
+      'notes': this.getNotesJSON()
+    });
+  }
 
   editNote(editNote: Note) {
     const today = new Date();
-    const editIndex = this.notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
-    this.notes[editIndex] = editNote;
+    const editIndex = this._notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
+    this._notes[editIndex] = editNote;
   }
 
   isEditable(note: Note): boolean {

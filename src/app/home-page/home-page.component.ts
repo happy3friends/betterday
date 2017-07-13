@@ -10,15 +10,16 @@ import {Router} from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
   allNotes: Note[];
-  notes: Note[];
+  addedNotes: Note[];
 
   lastNotesIndexes = [0, 1, 2];
 
-  constructor(private notesService: NotesService, private router: Router) { }
+  constructor(private notesService: NotesService, private router: Router) {
+  }
 
   ngOnInit() {
-    this.notes = this.notesService.getAddedNotes();
-    this.allNotes = this.notesService.getNotes().reverse();
+    this.addedNotes = this.notesService.addedNotes;
+    this.allNotes = this.notesService.notes;
   }
 
   onLoadEdit(note: Note) {

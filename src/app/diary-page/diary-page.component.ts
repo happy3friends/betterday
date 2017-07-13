@@ -8,12 +8,13 @@ import { Note } from '../note';
   styleUrls: ['./diary-page.component.css']
 })
 export class DiaryPageComponent implements OnInit {
-  notes: Note[];
+  addedNotes: Note[];
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService) {
+  }
 
   ngOnInit() {
-    this.notes = this.notesService.getAddedNotes();
+    this.addedNotes = this.notesService.addedNotes;
   }
 
 }

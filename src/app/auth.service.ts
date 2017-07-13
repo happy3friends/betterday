@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { NotesService } from './notes.service';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +11,7 @@ export class AuthService {
   errorMessage = '';
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router, private notesService: NotesService) {
+  constructor(private router: Router) {
     firebase.initializeApp({
       apiKey: 'AIzaSyD633YnU0DJ4DA-V-IcbxCaLL2GAXXMjZY',
       authDomain: 'betterday-94a8e.firebaseapp.com',
@@ -85,10 +84,10 @@ export class AuthService {
   }
 
   logout() {
-    firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-       'email': firebase.auth().currentUser.email,
-      'notes': this.notesService.getNotesJSON()
-    });
+    // firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+    //    'email': firebase.auth().currentUser.email,
+    //   'notes': this.notesService.getNotesJSON()
+    // });
 
     firebase.auth().signOut()
       .then(

@@ -10,7 +10,7 @@ export class DataStorageService {
 
   storeNotesToCurrentUser() {
     const token = this.authService.getToken();
-    return this.http.put('https://betterday-94a8e.firebaseio.com/users.json?auth=' + token, this.noteService.getNotes());
+    return this.http.put('https://betterday-94a8e.firebaseio.com/users.json?auth=' + token, this.noteService.notes);
   }
 
   // getNotes() {

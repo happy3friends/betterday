@@ -37,7 +37,7 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [AuthService, NotesService, AuthGuard],
+  providers: [NotesService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

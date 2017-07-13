@@ -1,2 +1,2 @@
-<app-happy-card routerLink="/details/{{noteElement.getIdString()}}"
-                *ngFor="let noteElement of notes" [note]="noteElement"></app-happy-card>
+<app-happy-card *ngFor="let noteElement of addedNotes" [note]="noteElement"
+                routerLink="/details/{{noteElement.getIdString()}}"></app-happy-card>

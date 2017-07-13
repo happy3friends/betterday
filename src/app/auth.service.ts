@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { NotesService } from './notes.service';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +11,7 @@ export class AuthService {
   errorMessage = '';
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private notesService: NotesService) {
     firebase.initializeApp({
       apiKey: 'AIzaSyD633YnU0DJ4DA-V-IcbxCaLL2GAXXMjZY',
       authDomain: 'betterday-94a8e.firebaseapp.com',
@@ -47,6 +48,7 @@ export class AuthService {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
         (response) => {
+          this.notesService.saveNotesToFB(this.getUserId());
           this.router.navigate(['/login']);
         }
       )
@@ -68,8 +70,8 @@ export class AuthService {
             .then(
               (token: string) => this.token = token
             );
-          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
-            // this.notesServece.getNotesFromFB(snapshot.val().notes);
+          firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
+            this.notesService.getNotesFromFB((JSON.stringify(snapshot.val().notes)));
           });
         }
       )

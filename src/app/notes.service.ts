@@ -10,42 +10,17 @@ export class NotesService {
   constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() + i - 5);
+      newDate.setDate(newDate.getDate() + i);
       const newNote = (new Note).setDefaultData(newDate, true, true, true);
       this._notes.push(newNote);
     }
 
-    this._notes[0].setNoteData(
-      'Hogy fel tudtam kelni',
-      'Hogy nem fogyott el a kávé',
-      'Hogy felfértem a villamosra munkába menet',
-      true, true, true);
-
-    this._notes[1].setNoteData(
-      'Tudtam aludni a meleg ellenére',
-      'Péntek van',
-      '',
-      true, true, true);
-
-    this._notes[3].setNoteData(
-      'A pizzafutár 20 perc alatt ideért',
-      'Nem merült le a mobilom útközben',
-      'Anyukám húslevest főzőtt ebédre',
-      false, true, false);
-
-    this._notes[4].setNoteData(
-      '',
-      '',
-      '',
-      false, false, true);
-
-    this._notes.reverse();
+    this._notes.sort((prev, current) => prev.id < current.id ? -1 : 1);
   }
 
   get notes(): Note[] {
-    return this._notes;
+    return  this._notes;
   }
-
 
   get addedNotes(): Note[] {
     this._addedNotes = [];
@@ -54,16 +29,16 @@ export class NotesService {
         this._addedNotes.push(note);
       }
     });
+    this._addedNotes.sort((prev, current) => prev.id < current.id ? 1 : -1);
     return this._addedNotes;
   }
 
   getNotesFromFB(notes: Note[]) {
     this._notes = [];
     notes.forEach(note => {
-      console.log(note);
       this._notes.push(new Note(note));
     });
-    console.log(this._notes); // TODO
+    // console.log(this._notes); // TODO
   }
 
   saveNotesToFB(userId: string) {

@@ -2,7 +2,7 @@
 <div class="overview">
   <div class="day-box"
        (click)="onLoadEdit(note)"
-       *ngFor="let note of allNotes.reverse()"
+       *ngFor="let note of allNotes"
        [ngClass]="{
           'zero': note.getDailySuccess() === 0,
           'one': note.getDailySuccess() === 1,
@@ -18,8 +18,10 @@
 
 <hr>
 <h5 class="mt-3">Legutóbbi bejegyzések</h5>
-<app-happy-card routerLink="/details/{{addedNotes[index].id}}"
-                *ngFor="let index of lastNotesIndexes" [note]="addedNotes[index]"></app-happy-card>
+<div *ngIf="addedNotes.length > 0">
+  <app-happy-card *ngFor="let index of lastNotesIndexes" [note]="addedNotes[index]"
+                  routerLink="/details/{{addedNotes[index].id}}"></app-happy-card>
+</div>
 
 <div>
   <button class="all-notes-button btn btn-large btn-block mb-5" routerLink="/diary">Összes bejegyzés</button>

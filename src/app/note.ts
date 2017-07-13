@@ -1,5 +1,5 @@
 export class Note {
-  id: string;
+  private _id: string;
   gratitudes = [];
   gratitudes_done = false;
   exercise_done: boolean = null;
@@ -14,9 +14,9 @@ export class Note {
   }
 
   setDefaultData(id: Date, doing_exercise: boolean, doing_meditation: boolean, doing_kindness: boolean) {
-    this.id = '';
-    this.id = this.id + ((id.getMonth() + 1) < 10 ? '0' + (id.getMonth() + 1) : id.getMonth() + 1);
-    this.id = this.id + (id.getDate() < 10 ? '0' + id.getDate() : id.getDate());
+    this._id = '';
+    this._id = this._id + ((id.getMonth() + 1) < 10 ? '0' + (id.getMonth() + 1) : id.getMonth() + 1);
+    this._id = this._id + (id.getDate() < 10 ? '0' + id.getDate() : id.getDate());
 
     this.gratitudes[0] = '';
     this.gratitudes[1] = '';
@@ -73,10 +73,14 @@ export class Note {
     return success;
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   getIdDate(): Date {
     const idDate = new Date();
-    idDate.setMonth(+this.id.slice(0, 2) - 1);
-    idDate.setDate(+this.id.slice(2, 4));
+    idDate.setMonth(+this._id.slice(0, 2) - 1);
+    idDate.setDate(+this._id.slice(2, 4));
     return idDate;
   }
   // getIdString() {

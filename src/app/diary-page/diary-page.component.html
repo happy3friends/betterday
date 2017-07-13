@@ -1,2 +1,4 @@
-<app-happy-card *ngFor="let noteElement of addedNotes" [note]="noteElement"
-                routerLink="/details/{{noteElement.id}}"></app-happy-card>
+<div *ngIf="addedNotes.length > 0">
+  <app-happy-card *ngFor="let noteElement of addedNotes" [note]="noteElement"
+                  routerLink="/details/{{noteElement.id}}"></app-happy-card>
+</div>

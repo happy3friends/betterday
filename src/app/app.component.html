@@ -27,7 +27,7 @@
         </ul>
       </ng-template>
 
-      <ul class="navbar-nav" *ngIf="!isLoggedIn$ | async">
+      <ul class="navbar-nav" *ngIf="!(isLoggedIn$ | async)">
           <li class="nav-item">
             <a routerLink="/login" class="nav-link" href="#">Bejelentkezés</a>
           </li>

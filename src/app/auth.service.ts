@@ -54,7 +54,6 @@ export class AuthService {
       )
       .catch(
         error => {
-          console.log(error);
           this.errorMessage = error.message;
         }
       );
@@ -77,7 +76,6 @@ export class AuthService {
       )
       .catch(
         error => {
-          console.log(error);
           this.errorMessage = error.message;
         }
       );
@@ -103,7 +101,7 @@ export class AuthService {
         (token: string) => this.token = token
       );
   }
-  
+
   get isLoggedIn(): BehaviorSubject<boolean> {
     return this._isLoggedIn;
   }

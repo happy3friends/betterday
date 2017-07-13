@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { NotesService } from '../notes.service';
 import { Note } from '../note';
-import { DataStorageService } from '../data-storage.service';
-import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +13,6 @@ export class NewHappinessComponent implements OnInit {
   myNote = new Note(new Date(), true, true, true);
 
   constructor(private notesService: NotesService,
-              private dataStorageService: DataStorageService,
               private router: Router) { }
 
   ngOnInit() {

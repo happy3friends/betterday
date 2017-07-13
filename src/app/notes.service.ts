@@ -11,7 +11,7 @@ export class NotesService {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
       newDate.setDate(newDate.getDate() + i - 5);
-      const newNote = new Note(newDate, true, true, true);
+      const newNote = (new Note).setDefaultData(newDate, true, true, true);
       this._notes.push(newNote);
     }
 
@@ -57,36 +57,30 @@ export class NotesService {
     return this._addedNotes;
   }
 
-  getNotesFromFB(notes: string) {
+  getNotesFromFB(notes: Note[]) {
     this._notes = [];
-    (JSON.parse(notes)).forEach(note => {
-      // let myNote: Note;
-      // myNote = JSON.parse(note);
-      // console.log(myNote);
-      this._notes.push(JSON.parse(note));
+    notes.forEach(note => {
+      console.log(note);
+      this._notes.push(new Note(note));
     });
     console.log(this._notes); // TODO
   }
 
   saveNotesToFB(userId: string) {
-    const jsonNotes = [];
-    this._notes.forEach(note => {
-      jsonNotes.push(JSON.stringify(note))
-    });
     firebase.database().ref('users/' + userId).set({
-      'notes': jsonNotes
+      'notes': this._notes
     });
   }
 
   editNote(editNote: Note) {
     const today = new Date();
-    const editIndex = this._notes.findIndex(note => note.id.getDate() === today.getDate() && note.id.getMonth() === today.getMonth());
+    const editIndex = this._notes.findIndex(note => note.getIdDate().getDate() === today.getDate() && note.getIdDate().getMonth() === today.getMonth());
     this._notes[editIndex] = editNote;
   }
 
   isEditable(note: Note): boolean {
     const today = new Date();
-    return today.getDate() === note.id.getDate() && today.getMonth() === note.id.getMonth();
+    return today.getDate() === note.getIdDate().getDate() && today.getMonth() === note.getIdDate().getMonth();
   }
 
 }

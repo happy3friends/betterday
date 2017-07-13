@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./new-happiness.component.css']
 })
 export class NewHappinessComponent implements OnInit {
-  myNote = new Note(new Date(), true, true, true);
+  myNote = (new Note).setDefaultData(new Date(), true, true, true);
 
   constructor(private notesService: NotesService,
               private router: Router,

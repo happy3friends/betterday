@@ -1,5 +1,5 @@
 export class Note {
-  private _id: Date;
+  id: string;
   gratitudes = [];
   gratitudes_done = false;
   exercise_done: boolean = null;
@@ -7,8 +7,16 @@ export class Note {
   kindness_done: boolean = null;
   isAdded = false;
 
-  constructor(id: Date, doing_exercise: boolean, doing_meditation: boolean, doing_kindness: boolean ) {
-    this._id = id;
+  constructor(data?: Note) {
+    if (data != null) {
+      Object.assign(this, data);
+    }
+  }
+
+  setDefaultData(id: Date, doing_exercise: boolean, doing_meditation: boolean, doing_kindness: boolean) {
+    this.id = '';
+    this.id = this.id + ((id.getMonth() + 1) < 10 ? '0' + (id.getMonth() + 1) : id.getMonth() + 1);
+    this.id = this.id + (id.getDate() < 10 ? '0' + id.getDate() : id.getDate());
 
     this.gratitudes[0] = '';
     this.gratitudes[1] = '';
@@ -21,8 +29,9 @@ export class Note {
       this.meditation_done = false;
     }
     if (doing_kindness) {
-     this.kindness_done = false;
+      this.kindness_done = false;
     }
+    return this;
   }
 
   setNoteData(grat1: string, grat2: string, grat3: string,
@@ -64,15 +73,28 @@ export class Note {
     return success;
   }
 
-  getIdString() {
-    let idString = '';
-    idString = idString + ((this._id.getMonth() + 1) < 10 ? '0' + (this._id.getMonth() + 1) : this._id.getMonth() + 1);
-    idString = idString + (this._id.getDate() < 10 ? '0' + this._id.getDate() : this._id.getDate());
-    return idString;
+  getIdDate(): Date {
+    const idDate = new Date();
+    idDate.setMonth(+this.id.slice(0, 2) - 1);
+    idDate.setDate(+this.id.slice(2, 4));
+    return idDate;
   }
+  // getIdString() {
+  //   let idString = '';
+  //   idString = idString + ((this.id.getMonth() + 1) < 10 ? '0' + (this.id.getMonth() + 1) : this.id.getMonth() + 1);
+  //   idString = idString + (this.id.getDate() < 10 ? '0' + this.id.getDate() : this.id.getDate());
+  //   return idString;
+  // }
 
-
-  get id(): Date {
-    return this._id;
-  }
+  // toFirebase() {
+  //   return {
+  //     id: this.id.getTime(),
+  //     gratitudes: this.gratitudes,
+  //     gratitudes_done: this.gratitudes_done,
+  //     exercise_done: this.exercise_done,
+  //     meditation_done: this.meditation_done,
+  //     kindness_done: this.kindness_done,
+  //     isAdded: this.isAdded
+  //   };
+  // }
 }

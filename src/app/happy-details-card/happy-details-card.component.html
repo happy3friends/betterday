@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()">
   <div class="diary-post-details">
-    <div class="date">{{editNote.id.getMonth() + 1}}.{{editNote.id.getDate()}}.</div>
+    <div class="date">{{editNote.getIdDate() | date: 'M.d'}}.</div>
     <div class="gratitude">
       <div class="title"><i class="fa fa-child"></i> Hála</div>
       <div class="body">

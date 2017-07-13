@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit {
 
   onLoadEdit(note: Note) {
     if (note.isAdded) {
-      const routeId = note.getIdString();
+      const routeId = note.id;
       this.router.navigate(['details', routeId]);
     }
   }

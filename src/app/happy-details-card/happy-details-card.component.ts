@@ -22,18 +22,10 @@ export class HappyDetailsCardComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     const editIndex = this.notesService.addedNotes.findIndex(note => (
-      this.getIdDate(id).getDate() === note.id.getDate() &&
-      this.getIdDate(id).getMonth() === note.id.getMonth()
+      note.id === id
     ));
     this.editNote = this.notesService.addedNotes[editIndex];
     this.editable = this.notesService.isEditable(this.editNote);
-  }
-
-  getIdDate(dateString: string): Date {
-    const idDate = new Date();
-    idDate.setMonth(+dateString.slice(0, 2) - 1);
-    idDate.setDate(+dateString.slice(2, 4));
-    return idDate;
   }
 
   onSubmit() {

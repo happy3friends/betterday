@@ -9,18 +9,20 @@ export class AlertService {
 
   alertObservableSubscription: Subscription;
 
-  setAlert(message: string, succes: boolean) {
+  setAlert(message: string, succes: boolean, startTime = 500, hideTime = 4000) {
     this.alertMessage = message;
     succes ? this.alertSuccess = 'alert-success' : this.alertSuccess = 'alert-danger';
     this.showAlert = true;
 
+    let alertObserver = null;
     const alertObservable = Observable.create((observer: Observer<boolean>) => {
+      alertObserver = observer;
       setTimeout(() => {
         observer.next(true);
-      }, 500);
+      }, startTime);
       setTimeout(() => {
         observer.next(false);
-      }, 4000);
+      }, hideTime);
     });
 
     this.alertObservableSubscription = alertObservable.subscribe(
@@ -28,5 +30,7 @@ export class AlertService {
         this.showAlert = bool;
       }
     );
+
+    return alertObserver;
   }
 }

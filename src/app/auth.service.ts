@@ -9,7 +9,7 @@ import { NotesService } from './notes.service';
 export class AuthService {
   errorMessage = '';
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
-  private currentUser: any;
+  private _currentUser: any;
   private runFillUserNotes: Observable<void>;
 
   constructor(private router: Router, private notesService: NotesService) {
@@ -25,11 +25,11 @@ export class AuthService {
       (user) => {
         console.log('constructor');
         if (user != null) {
-          if (this.currentUser == null) {
+          if (this._currentUser == null) {
             // ha nincs tarolva jelenlegi user akkor feltoltjuk a feltoltjuk a note-kat
             this.fillUserNotes(user).subscribe(() => {
               // miutan feltolttuk a user-t taroljuk
-              this.currentUser = user;
+              this._currentUser = user;
             });
             // jelzunk hogy be van lepve
             this._isLoggedIn.next(true);
@@ -40,7 +40,7 @@ export class AuthService {
         } else {
           // nincs belepve vagy kilepett ezert jelzunk + currentUser-t toroljuk
           this._isLoggedIn.next(false);
-          this.currentUser = null;
+          this._currentUser = null;
         }
       }
     );
@@ -60,9 +60,9 @@ export class AuthService {
           if (user != null) {
             // ha belepett userrel val dolgunk, akkor kitoltjuk az note-kat
             this.fillUserNotes(user).subscribe(() => {
-              if (this.currentUser == null) {
+              if (this._currentUser == null) {
                 // ha nincs tarolva jelenlegi user akkor taroljuk
-                this.currentUser = user;
+                this._currentUser = user;
               }
               // jelzunk a router-nek hogy mehet tovabb
               obsReturn(observer, true, unSubscribeFunction);
@@ -111,7 +111,7 @@ export class AuthService {
   // viszont sima belepesnel meg a constructorban levo vizsgalat fut meg hamarabb ...
   // mivel stream-be zarjuk es a stream-et elrakjuk igy mind1 hogy authguard felol vagy constructor felol jon a feltoltes,
   // mindenki ugyan azt a stream-et kapja vissza ha van eppen futo lekerdezes
-  private fillUserNotes(user) {
+  fillUserNotes(user) {
     if (this.runFillUserNotes != null) {
       // ha futo stream van akkor vissza adjuk a futo streamet
       return this.runFillUserNotes;
@@ -145,7 +145,11 @@ export class AuthService {
   }
 
   getUserId() {
-    return this.currentUser.uid;
+    return this._currentUser.uid;
+  }
+
+  get currentUser(): any {
+    return this._currentUser;
   }
 
   get isLoggedIn(): BehaviorSubject<boolean> {

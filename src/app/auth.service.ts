@@ -23,7 +23,7 @@ export class AuthService {
 
     firebase.auth().onAuthStateChanged(
       (user) => {
-        console.log('constructor');
+        // console.log('constructor');
         if (user != null) {
           if (this._currentUser == null) {
             // ha nincs tarolva jelenlegi user akkor feltoltjuk a feltoltjuk a note-kat
@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   authGuardCheckUserIsLoggedIn() {
-    console.log('authGuardCheckUserIsLoggedIn');
+    // console.log('authGuardCheckUserIsLoggedIn');
     // observer visszahivasi metodus(csak azert mert ismetlodik es is szebb es tomorebb a kod
     const obsReturn = (observer, result: boolean, unsubscriberFn: Function) => {
       observer.next(result);
@@ -78,18 +78,24 @@ export class AuthService {
 
   signupUser(email: string, password: string) {
     this.errorMessage = '';
-    return firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(
-        (response) => {
-          this.notesService.saveNotesToFB(this.getUserId());
-          this.router.navigate(['/login']);
-        }
-      )
-      .catch(
-        error => {
-          this.errorMessage = error.message;
-        }
-      );
+    const errorFn = (observer, error) => {
+      this.errorMessage = error.message;
+      observer.error(error);
+      observer.complete();
+    };
+    return new Observable<void>(observer => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(
+          (response) => {
+            // this.notesService.saveNotesToFB(this.getUserId());
+            observer.next();
+            observer.complete();
+            this.router.navigate(['/']);
+          },
+          errorFn.bind(this, observer)
+        )
+        .catch(errorFn.bind(this, observer));
+    });
   }
 
   loginUser(email: string, password: string) {
@@ -119,7 +125,7 @@ export class AuthService {
     this.runFillUserNotes = new Observable<void>((observer) => {
       // keszitunk egy stream-et amit az adatkuldes utan le is zarunk ...
       firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
-        this.notesService.getNotesFromFB(snapshot.val().notes);
+        this.notesService.getNotesFromFB((snapshot.val() != null && snapshot.val()['notes'] != null) ? snapshot.val().notes : []);
         // toroljuk a stream-et tarolo osztalyvaltozot...
         this.runFillUserNotes = null;
         observer.next();

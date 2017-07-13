@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
         let message;
         let success;
         if (this.authService.errorMessage === '') {
-          message = 'Sikeres regisztráció, most már bejelentkezhet.';
+          message = 'Sikeres regisztráció.';
           success = true;
         } else {
           message = this.authService.errorMessage;

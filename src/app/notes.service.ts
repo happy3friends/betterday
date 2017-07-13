@@ -57,4 +57,11 @@ export class NotesService {
     return today.getDate() === note.getIdDate().getDate() && today.getMonth() === note.getIdDate().getMonth();
   }
 
+  getTodayNoteIndex(): number {
+    const today = new Date();
+    const editIndex = this._notes.findIndex(
+      note => note.getIdDate().getDate() === today.getDate() && note.getIdDate().getMonth() === today.getMonth());
+    return editIndex;
+  }
+
 }

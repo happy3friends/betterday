@@ -5,24 +5,29 @@
             aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" routerLink="home"><i class="fa fa-modx spin"></i><span class="ml-3">BetterDay</span></a>
+    <a class="navbar-brand" routerLink="/home"><i class="fa fa-modx spin"></i><span class="ml-3">BetterDay</span></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn$ | async; else emptymenu">
           <li class="nav-item">
-            <a class="nav-link" routerLink="home">Áttekintés</a>
+            <a class="nav-link" routerLink="/home">Áttekintés</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="diary">Bejegyzések</a>
+            <a class="nav-link" routerLink="/diary">Bejegyzések</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="new"><i class="fa fa-plus mr-1"></i>Új bejegyzés</a>
+            <a class="nav-link" *ngIf="!getNotesService().notes[getNotesService().getTodayNoteIndex()].isAdded; else editNote"
+               routerLink="/new"><i class="fa fa-plus mr-1"></i>Új bejegyzés</a>
+            <ng-template #editNote>
+              <a class="nav-link"
+                 routerLink="/details/{{ getNotesService().notes[getNotesService().getTodayNoteIndex()].id }}"><i class="fa fa-plus mr-1"></i>Modosítás</a>
+            </ng-template>
           </li>
       </ul>
       <ng-template #emptymenu>
         <ul class="navbar-nav mr-auto"><li class="nav-item">
           <li class="nav-item">
-            <a class="nav-link" routerLink="about">Rólunk</a>
+            <a class="nav-link" routerLink="/about">Rólunk</a>
           </li>
         </ul>
       </ng-template>

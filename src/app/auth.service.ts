@@ -7,7 +7,6 @@ import { NotesService } from './notes.service';
 
 @Injectable()
 export class AuthService {
-  token: string;
   errorMessage = '';
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
 
@@ -64,10 +63,6 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         (response) => {
-          firebase.auth().currentUser.getIdToken()
-            .then(
-              (token: string) => this.token = token
-            );
           firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
             this.notesService.getNotesFromFB(snapshot.val().notes);
           });
@@ -88,18 +83,10 @@ export class AuthService {
           this.router.navigate(['/login']);
         }
       );
-    this.token = null;
   }
 
   getUserId() {
     return firebase.auth().currentUser.uid;
-  }
-
-  getToken() {
-    firebase.auth().currentUser.getIdToken()
-      .then(
-        (token: string) => this.token = token
-      );
   }
 
   get isLoggedIn(): BehaviorSubject<boolean> {

@@ -64,7 +64,6 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         (response) => {
-          this.router.navigate(['/']);
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token
@@ -72,6 +71,7 @@ export class AuthService {
           firebase.database().ref('/users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
             this.notesService.getNotesFromFB(snapshot.val().notes);
           });
+          this.router.navigate(['/']);
         }
       )
       .catch(

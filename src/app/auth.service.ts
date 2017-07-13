@@ -9,8 +9,8 @@ import { NotesService } from './notes.service';
 export class AuthService {
   errorMessage = '';
   private _isLoggedIn = new BehaviorSubject<boolean>(false);
-  private currentUser;
-  private runAuthGuardCheck = false;
+  private currentUser: any;
+  private runFillUserNotes: Observable<void>;
 
   constructor(private router: Router, private notesService: NotesService) {
     firebase.initializeApp({
@@ -25,11 +25,9 @@ export class AuthService {
       (user) => {
         if (user != null) {
           if (this.currentUser == null) {
-            if (!this.runAuthGuardCheck) {
-              this.fillUserNotes(user).subscribe(() => {
-                this.currentUser = user;
-              });
-            }
+            this.fillUserNotes(user).subscribe(() => {
+              this.currentUser = user;
+            });
             this._isLoggedIn.next(true);
           } else {
             this._isLoggedIn.next(true);
@@ -43,7 +41,6 @@ export class AuthService {
   }
 
   authGuardCheckUserIsLoggedIn() {
-    this.runAuthGuardCheck = true;
     const obsReturn = (observer, result: boolean, unsubscriberFn: Function) => {
       observer.next(result);
       unsubscriberFn();
@@ -53,18 +50,13 @@ export class AuthService {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
           if (user != null) {
-            if (this.currentUser == null) {
-              this.currentUser = user;
-              this.fillUserNotes(user).subscribe(() => {
-                this.runAuthGuardCheck = false;
-                obsReturn(observer, true, unSubscribeFunction);
-              });
-            } else {
+            this.fillUserNotes(user).subscribe(() => {
+              if (this.currentUser == null) {
+                this.currentUser = user;
+              }
               obsReturn(observer, true, unSubscribeFunction);
-            }
+            });
           } else {
-            this.runAuthGuardCheck = false;
-
             obsReturn(observer, false, unSubscribeFunction);
           }
         }
@@ -104,16 +96,23 @@ export class AuthService {
   }
 
   private fillUserNotes(user) {
-    return new Observable<void>((observer) => {
+    if (this.runFillUserNotes != null) {
+      return this.runFillUserNotes;
+    }
+    this.runFillUserNotes = new Observable<void>((observer) => {
       firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
         this.notesService.getNotesFromFB(snapshot.val().notes);
+        this.runFillUserNotes = null;
         observer.next();
         observer.complete();
       }, (error) => {
+        this.runFillUserNotes = null;
         observer.error(error);
-        observer.complete()
+        observer.complete();
       });
     });
+
+    return this.runFillUserNotes;
   }
 
   logout() {

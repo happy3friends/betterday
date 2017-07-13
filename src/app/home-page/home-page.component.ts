@@ -12,8 +12,6 @@ export class HomePageComponent implements OnInit {
   allNotes: Note[];
   addedNotes: Note[];
 
-  lastNotesIndexes = [0, 1, 2];
-
   constructor(private notesService: NotesService, private router: Router) {
   }
 

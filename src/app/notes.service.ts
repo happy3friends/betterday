@@ -14,8 +14,6 @@ export class NotesService {
       const newNote = (new Note).setDefaultData(newDate, true, true, true);
       this._notes.push(newNote);
     }
-
-    this._notes.sort((prev, current) => prev.id < current.id ? -1 : 1);
   }
 
   get notes(): Note[] {

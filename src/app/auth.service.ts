@@ -23,6 +23,7 @@ export class AuthService {
 
     firebase.auth().onAuthStateChanged(
       (user) => {
+        console.log('constructor');
         if (user != null) {
           if (this.currentUser == null) {
             // ha nincs tarolva jelenlegi user akkor feltoltjuk a feltoltjuk a note-kat
@@ -46,6 +47,7 @@ export class AuthService {
   }
 
   authGuardCheckUserIsLoggedIn() {
+    console.log('authGuardCheckUserIsLoggedIn');
     // observer visszahivasi metodus(csak azert mert ismetlodik es is szebb es tomorebb a kod
     const obsReturn = (observer, result: boolean, unsubscriberFn: Function) => {
       observer.next(result);

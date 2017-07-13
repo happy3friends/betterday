@@ -30,6 +30,7 @@ export class AuthService {
                 this.currentUser = user;
               });
             }
+            this._isLoggedIn.next(true);
           } else {
             this._isLoggedIn.next(true);
           }

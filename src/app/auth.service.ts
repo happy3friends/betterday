@@ -25,14 +25,19 @@ export class AuthService {
       (user) => {
         if (user != null) {
           if (this.currentUser == null) {
+            // ha nincs tarolva jelenlegi user akkor feltoltjuk a feltoltjuk a note-kat
             this.fillUserNotes(user).subscribe(() => {
+              // miutan feltolttuk a user-t taroljuk
               this.currentUser = user;
             });
+            // jelzunk hogy be van lepve
             this._isLoggedIn.next(true);
           } else {
+            // ha van tarolva belepett user akkor csak jelzunk hogy belepett (auth guard hivas miatt kell)
             this._isLoggedIn.next(true);
           }
         } else {
+          // nincs belepve vagy kilepett ezert jelzunk + currentUser-t toroljuk
           this._isLoggedIn.next(false);
           this.currentUser = null;
         }
@@ -41,6 +46,7 @@ export class AuthService {
   }
 
   authGuardCheckUserIsLoggedIn() {
+    // observer visszahivasi metodus(csak azert mert ismetlodik es is szebb es tomorebb a kod
     const obsReturn = (observer, result: boolean, unsubscriberFn: Function) => {
       observer.next(result);
       unsubscriberFn();
@@ -50,13 +56,17 @@ export class AuthService {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
           if (user != null) {
+            // ha belepett userrel val dolgunk, akkor kitoltjuk az note-kat
             this.fillUserNotes(user).subscribe(() => {
               if (this.currentUser == null) {
+                // ha nincs tarolva jelenlegi user akkor taroljuk
                 this.currentUser = user;
               }
+              // jelzunk a router-nek hogy mehet tovabb
               obsReturn(observer, true, unSubscribeFunction);
             });
           } else {
+            // nincs belepve ezert jelzunk a routernak hogy nem mehet tovabb
             obsReturn(observer, false, unSubscribeFunction);
           }
         }
@@ -95,17 +105,25 @@ export class AuthService {
       );
   }
 
+  // azert kell a stream mert refreshnel az authguard elobb hivodik meg ...
+  // viszont sima belepesnel meg a constructorban levo vizsgalat fut meg hamarabb ...
+  // mivel stream-be zarjuk es a stream-et elrakjuk igy mind1 hogy authguard felol vagy constructor felol jon a feltoltes,
+  // mindenki ugyan azt a stream-et kapja vissza ha van eppen futo lekerdezes
   private fillUserNotes(user) {
     if (this.runFillUserNotes != null) {
+      // ha futo stream van akkor vissza adjuk a futo streamet
       return this.runFillUserNotes;
     }
     this.runFillUserNotes = new Observable<void>((observer) => {
+      // keszitunk egy stream-et amit az adatkuldes utan le is zarunk ...
       firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
         this.notesService.getNotesFromFB(snapshot.val().notes);
+        // toroljuk a stream-et tarolo osztalyvaltozot...
         this.runFillUserNotes = null;
         observer.next();
         observer.complete();
       }, (error) => {
+        // hibakezeles (ha fb hibat dob)
         this.runFillUserNotes = null;
         observer.error(error);
         observer.complete();

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
-import { NotesService } from '../notes.service';
 import { AlertService } from '../alert.service';
 
 @Component({
@@ -12,8 +11,7 @@ import { AlertService } from '../alert.service';
 export class SignupComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private alertService: AlertService,
-              private notesService: NotesService) { }
+              private alertService: AlertService) { }
 
   ngOnInit() {
   }
@@ -23,7 +21,6 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password).then(
       () => {
-        this.notesService.saveNotesToFB();
         let message;
         let success;
         if (this.authService.errorMessage === '') {

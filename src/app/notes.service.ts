@@ -1,6 +1,5 @@
 import { Note } from './note';
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
 
 @Injectable()
 export class NotesService {
@@ -8,7 +7,7 @@ export class NotesService {
   private _notes: Note[] = [];
   private _addedNotes: Note[] = [];
 
-  constructor(private authService: AuthService) {
+  constructor() {
     for (let i = 0; i < 21; i++) {
       const newDate = new Date();
       newDate.setDate(newDate.getDate() + i - 5);
@@ -58,20 +57,23 @@ export class NotesService {
     return this._addedNotes;
   }
 
-  getNotesFromFB(notesPromise: Promise<string[]>) {
-    notesPromise.then(notes => {
-      notes.forEach(note => {
-        console.log('id: ' + JSON.parse(note).id);
-      })
+  getNotesFromFB(notes: string) {
+    this._notes = [];
+    (JSON.parse(notes)).forEach(note => {
+      // let myNote: Note;
+      // myNote = JSON.parse(note);
+      // console.log(myNote);
+      this._notes.push(JSON.parse(note));
     });
+    console.log(this._notes); // TODO
   }
 
-  saveNotesToFB() {
+  saveNotesToFB(userId: string) {
     const jsonNotes = [];
     this._notes.forEach(note => {
       jsonNotes.push(JSON.stringify(note))
     });
-    firebase.database().ref('users/' + this.authService.getUserId()).set({
+    firebase.database().ref('users/' + userId).set({
       'notes': jsonNotes
     });
   }

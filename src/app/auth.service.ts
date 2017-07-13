@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 import { NotesService } from './notes.service';
-import { Note } from './note';
 
 @Injectable()
 export class AuthService {

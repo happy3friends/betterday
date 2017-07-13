@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
 import { NotesService } from './notes.service';
 import { Note } from './note';
 import { DataStorageService } from './data-storage.service';
@@ -13,11 +12,9 @@ import { AlertService } from './alert.service';
   providers: [NotesService, DataStorageService, AlertService]
 })
 export class AppComponent implements OnInit {
-  title = 'Better Day app';
   notes: Note[];
 
-  constructor(private notesService: NotesService,
-              private authService: AuthService,
+  constructor(private authService: AuthService,
               private alertService: AlertService) { }
 
   ngOnInit() {

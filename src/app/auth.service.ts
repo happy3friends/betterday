@@ -26,8 +26,9 @@ export class AuthService {
         if (user != null) {
           if (this.currentUser == null) {
             if (!this.runAuthGuardCheck) {
-              this.currentUser = user;
-              this.fillUserNotes(user).subscribe(() => {});
+              this.fillUserNotes(user).subscribe(() => {
+                this.currentUser = user;
+              });
             }
             this._isLoggedIn.next(true);
           } else {

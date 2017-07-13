@@ -47,7 +47,7 @@ export class AuthService {
     return new Observable(observer => {
       const unSubscribeFunction: Function = firebase.auth().onAuthStateChanged(
         (user) => {
-          if (this.currentUser == null) {
+          if (this.currentUser == null && user != null) {
             this.currentUser = user;
             this.fillUserNotes(user).subscribe(() => {
               this.runAuthGuardCheck = false;
@@ -59,7 +59,7 @@ export class AuthService {
           } else {
             this.runAuthGuardCheck = false;
 
-            observer.next(user != null);
+            observer.next(false);
             unSubscribeFunction();
             observer.complete();
           }

@@ -57,6 +57,9 @@ export class NotesService {
     const today = new Date();
     const editIndex = this._notes.findIndex(
       note => note.getIdDate().getDate() === today.getDate() && note.getIdDate().getMonth() === today.getMonth());
+    if (editNote.gratitudes[0] === '' || editNote.gratitudes[1] === '' || editNote.gratitudes[2] === '') {
+      editNote.gratitudes_done = false;
+    }
     this._notes[editIndex] = editNote;
   }
 

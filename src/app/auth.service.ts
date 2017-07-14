@@ -135,7 +135,7 @@ export class AuthService {
         };
         if (snapshot.val() == null || snapshot.val()['notes'] == null) {
           // TODO hiba agat kezelni!!!
-          this.notesService.saveNotesToFB(user.uid).then(
+          this.notesService.saveNotesToFB(user.uid, true).then(
             () => completeFn(observer)
           );
         } else {
